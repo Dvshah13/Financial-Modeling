@@ -8,6 +8,7 @@ rsi_20day = []
 def current_data(stock):
     stock = Share('AAPL')
     print stock.get_price()
+    print get_percent_change()
     print stock.get_volume()
     print stock.get_50day_moving_avg()
     print stock.get_percent_change_from_50_day_moving_average()
