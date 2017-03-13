@@ -6,16 +6,17 @@ sma_20day = []
 rsi_20day = []
 
 def current_data(stock):
-    apple = Share(stock)
-    print apple.get_price()
-    print apple.get_volume()
-    print apple.get_50day_moving_avg()
-    print apple.get_percent_change_from_50_day_moving_average()
-    print apple.get_price_earnings_ratio()
-    print apple.get_price_earnings_growth_ratio()
-    print apple.get_short_ratio()
+    stock = Share('AAPL')
+    print stock.get_price()
+    print stock.get_volume()
+    print stock.get_50day_moving_avg()
+    print stock.get_percent_change_from_50_day_moving_average()
+    print stock.get_price_earnings_ratio()
+    print stock.get_price_earnings_growth_ratio()
+    print stock.get_short_ratio()
 
-current_data('AAPL')
+my_stock = 'apple'
+current_data(my_stock)
 
 # def get_data(filename):
 # 	with open(filename, 'r') as csvfile:
