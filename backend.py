@@ -6,10 +6,19 @@ sma_20day = []
 rsi_20day = []
 
 def current_data(stock):
-    stock = Share('AAPL')
+    if stock == 'apple':
+        stock = Share('AAPL')
+        data_front_page(stock)
+
+    elif stock == 'alphabet':
+        stock = Share('GOOG')
+        data_front_page(stock)
+
+def data_front_page(stock):
     print stock.get_price()
-    print get_percent_change()
+    print stock.get_percent_change()
     print stock.get_volume()
+    print stock.get_ebitda()
     print stock.get_50day_moving_avg()
     print stock.get_percent_change_from_50_day_moving_average()
     print stock.get_price_earnings_ratio()
