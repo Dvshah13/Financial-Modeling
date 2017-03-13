@@ -10,8 +10,10 @@ def current_data(stock):
     print apple.get_price()
     print apple.get_volume()
     print apple.get_50day_moving_avg()
+    print apple.get_percent_change_from_50_day_moving_average()
     print apple.get_price_earnings_ratio()
     print apple.get_price_earnings_growth_ratio()
+    print apple.get_short_ratio()
 
 current_data('AAPL')
 
