@@ -24,9 +24,23 @@ def current_data(stock):
     if stock == 'apple':
         stock = Share('AAPL')
         data_front_page(stock)
-
     elif stock == 'alphabet':
         stock = Share('GOOG')
+        data_front_page(stock)
+    elif stock == 's&p index':
+        stock = Share('SPY')
+        data_front_page(stock)
+    elif stock == 'facebook':
+        stock = Share('fb')
+        data_front_page(stock)
+    elif stock == 'amazon':
+        stock = Share('AMZN')
+        data_front_page(stock)
+    elif stock == 'disney':
+        stock = Share('dis')
+        data_front_page(stock)
+    elif stock == 'microsoft':
+        stock = Share('msft')
         data_front_page(stock)
 
 def data_front_page(stock):
@@ -90,6 +104,9 @@ def define_stock_rsi():
     elif (my_stock == 'disney'):
         stock = 'dis data'
         read_stock_rsi(stock)
+    elif (my_stock == 'microsoft'):
+        stock = 'msft data'
+        read_stock_rsi(stock)
 
 # Read the rsi data for whichever stock is chosen
 def read_stock_rsi(stock):
@@ -115,5 +132,5 @@ def read_stock_rsi(stock):
 # add_user_portfolio()
 # my_stock = 'alphabet'
 # current_data(my_stock)
-my_stock = 'disney'
+my_stock = 'microsoft'
 define_stock_rsi()

@@ -17,7 +17,7 @@ neg_count = 0
 pos_count = 0
 
 # Retrieve Tweets
-stock = 'valeant'
+stock = 'apple'
 if stock == 'apple':
     public_tweets = api.search('$aapl')
 elif stock == 'google':
@@ -30,8 +30,8 @@ elif stock == 'facebook':
     public_tweets = api.search('$fb')
 elif stock == 'amazon':
     public_tweets = api.search('$amzn')
-elif stock == 'valeant':
-    public_tweets = api.search('$vrx')
+elif stock == 'msft':
+    public_tweets = api.search('$msft')
 
 # Find tweets and catorgorize them
 for tweet in public_tweets:

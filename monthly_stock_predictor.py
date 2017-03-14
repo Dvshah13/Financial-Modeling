@@ -30,6 +30,7 @@ print "3. GOOG"
 print "4. FB"
 print "5. AMZN"
 print "6. DIS"
+print "7. MSFT"
 case = int(input())
 
 
@@ -47,6 +48,8 @@ elif case == 5:
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'
 elif case == 6:
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'
+elif case == 7:
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'
 
 with open(url, 'r') as f:
     reader = csv.reader(f)
