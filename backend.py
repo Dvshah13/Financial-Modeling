@@ -22,37 +22,37 @@ from yahoo_finance import Share
 # Get current data of stock from Yahoo Finance
 def current_data(stock):
     if stock == 'apple':
-        stock = Share('AAPL')
-        data_front_page(stock)
+        symbol = Share('AAPL')
+        data_front_page(stock, symbol)
     elif stock == 'alphabet':
-        stock = Share('GOOG')
-        data_front_page(stock)
+        symbol = Share('GOOG')
+        data_front_page(stock, symbol)
     elif stock == 's&p index':
-        stock = Share('SPY')
-        data_front_page(stock)
+        symbol = Share('SPY')
+        data_front_page(stock, symbol)
     elif stock == 'facebook':
-        stock = Share('fb')
-        data_front_page(stock)
+        symbol = Share('fb')
+        data_front_page(stock, symbol)
     elif stock == 'amazon':
-        stock = Share('AMZN')
-        data_front_page(stock)
+        symbol = Share('AMZN')
+        data_front_page(stock, symbol)
     elif stock == 'disney':
-        stock = Share('dis')
-        data_front_page(stock)
+        symbol = Share('dis')
+        data_front_page(stock, symbol)
     elif stock == 'microsoft':
-        stock = Share('msft')
-        data_front_page(stock)
+        symbol = Share('msft')
+        data_front_page(stock, symbol)
 
-def data_front_page(stock):
-    print stock.get_price()
-    print stock.get_percent_change()
-    print stock.get_volume()
-    print stock.get_ebitda()
-    print stock.get_50day_moving_avg()
-    print stock.get_percent_change_from_50_day_moving_average()
-    print stock.get_price_earnings_ratio()
-    print stock.get_price_earnings_growth_ratio()
-    print stock.get_short_ratio()
+def data_front_page(stock, symbol):
+    print stock, "current price: ", symbol.get_price()
+    print stock, "day percent change: ", symbol.get_percent_change()
+    print stock, "daily volume: ", symbol.get_volume()
+    print stock, "EBITDA: ", symbol.get_ebitda()
+    print stock, "50 day sma: ", symbol.get_50day_moving_avg()
+    print stock, "percent change from 50 day sma: ", symbol.get_percent_change_from_50_day_moving_average()
+    print stock, "price to earnings ratio: ", symbol.get_price_earnings_ratio()
+    print stock, "price to earnings growth ratio: ", symbol.get_price_earnings_growth_ratio()
+    print stock, "short ratio: ", symbol.get_short_ratio()
 
 # Add a new user
 # def add_user():
@@ -88,28 +88,28 @@ def define_stock_rsi(stock):
     # print list(df)
     if (stock == 'apple'):
         my_stock = 'aapl data'
-        read_stock_rsi(my_stock)
-    elif (stock == 'google'):
+        read_stock_rsi(stock, my_stock)
+    elif (stock == 'alphabet'):
         my_stock = 'goog data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
     elif (stock == 'facebook'):
         my_stock = 'fb data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
     elif (stock == 'amazon'):
         my_stock = 'amzn data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
     elif (stock == 's&p index'):
         my_stock = 'spy data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
     elif (stock == 'disney'):
         my_stock = 'dis data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
     elif (stock == 'microsoft'):
         my_stock = 'msft data'
-        read_stock_rsi(my_stock)
+        read_stock_rsi(stock, my_stock)
 
 # Read the rsi data for whichever stock is chosen
-def read_stock_rsi(my_stock):
+def read_stock_rsi(stock, my_stock):
     df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ my_stock + '/rsi_value.csv', nrows=10)
     df_10da['RSI']
     rsi_values_10da = df_10da['RSI'].mean()
@@ -118,9 +118,9 @@ def read_stock_rsi(my_stock):
     rsi_values_20da = df_20da['RSI'].mean()
     df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ my_stock + '/rsi_value.csv', nrows=50)
     rsi_values_50da = df_50da['RSI'].mean()
-    print "RSI 10 day average: ", rsi_values_10da
-    print "RSI 20 day average: ", rsi_values_20da
-    print "RSI 50 day average: ", rsi_values_50da
+    print stock, "RSI 10 day average: ", rsi_values_10da
+    print stock, "RSI 20 day average: ", rsi_values_20da
+    print stock, "RSI 50 day average: ", rsi_values_50da
     rsi_change_20_10 = (((rsi_values_10da / rsi_values_20da)-1) * 100)
     rsi_change_50_10 = (((rsi_values_10da / rsi_values_50da)-1) * 100)
     print "This is the RSI percentage change from 20 to 10 day: ", rsi_change_20_10
@@ -132,5 +132,6 @@ def read_stock_rsi(my_stock):
 # add_user_portfolio()
 # my_stock = 'alphabet'
 # current_data(my_stock)
-stock = 'microsoft'
+stock = 'alphabet'
+current_data(stock)
 define_stock_rsi(stock)

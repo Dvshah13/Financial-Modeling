@@ -20,7 +20,7 @@ pos_count = 0
 stock = 'apple'
 if stock == 'apple':
     public_tweets = api.search('$aapl')
-elif stock == 'google':
+elif stock == 'alphabet':
     public_tweets = api.search('$goog')
 elif stock == 's&p index':
     public_tweets = api.search('$spy')
