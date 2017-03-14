@@ -77,14 +77,19 @@ def define_stock_rsi():
         read_stock_rsi(stock)
     elif (my_stock == 'google'):
         stock = 'goog data'
+        read_stock_rsi(stock)
     elif (my_stock == 'facebook'):
         stock = 'fb data'
+        read_stock_rsi(stock)
     elif (my_stock == 'amazon'):
         stock = 'amzn data'
+        read_stock_rsi(stock)
     elif (my_stock == 's&p index'):
         stock = 'spy data'
+        read_stock_rsi(stock)
     elif (my_stock == 'disney'):
         stock = 'dis data'
+        read_stock_rsi(stock)
 
 # Read the rsi data for whichever stock is chosen
 def read_stock_rsi(stock):
@@ -96,13 +101,13 @@ def read_stock_rsi(stock):
     rsi_values_20da = df_20da['RSI'].mean()
     df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ stock + '/rsi_value.csv', nrows=50)
     rsi_values_50da = df_50da['RSI'].mean()
-    print rsi_values_10da
-    print rsi_values_20da
-    print rsi_values_50da
+    print "RSI 10 day average: ", rsi_values_10da
+    print "RSI 20 day average: ", rsi_values_20da
+    print "RSI 50 day average: ", rsi_values_50da
     rsi_change_20_10 = (((rsi_values_10da / rsi_values_20da)-1) * 100)
     rsi_change_50_10 = (((rsi_values_10da / rsi_values_50da)-1) * 100)
-    print rsi_change_20_10
-    print rsi_change_50_10
+    print "This is the RSI percentage change from 20 to 10 day: ", rsi_change_20_10
+    print "This is the RSI percentage change from 50 to 10 day: ", rsi_change_50_10
 
 
 ##  Command list to test  ##
@@ -110,5 +115,5 @@ def read_stock_rsi(stock):
 # add_user_portfolio()
 # my_stock = 'alphabet'
 # current_data(my_stock)
-my_stock = 'apple'
+my_stock = 'disney'
 define_stock_rsi()

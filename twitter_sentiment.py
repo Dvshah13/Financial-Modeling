@@ -17,7 +17,7 @@ neg_count = 0
 pos_count = 0
 
 # Retrieve Tweets
-stock = 'disney'
+stock = 'valeant'
 if stock == 'apple':
     public_tweets = api.search('$aapl')
 elif stock == 'google':
@@ -30,18 +30,20 @@ elif stock == 'facebook':
     public_tweets = api.search('$fb')
 elif stock == 'amazon':
     public_tweets = api.search('$amzn')
+elif stock == 'valeant':
+    public_tweets = api.search('$vrx')
 
 # Find tweets and catorgorize them
 for tweet in public_tweets:
-    # print(tweet.text)
+    print(tweet.text)
 
     #Step 4 Perform Sentiment Analysis on Tweets
     analysis = TextBlob(tweet.text)
     print(analysis.sentiment)
-    if (analysis.polarity > 0.2 and analysis.subjectivity > 0.4):
+    if (analysis.polarity > 0.1 and analysis.subjectivity > 0.4):
         pos_count += 1
         print(tweet.text)
-    elif (analysis.polarity < 0.2 and analysis.subjectivity > 0.4):
+    elif (analysis.polarity < 0 and analysis.subjectivity > 0.4):
         neg_count += 1
         print(tweet.text)
     print("")
