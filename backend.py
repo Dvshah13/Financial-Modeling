@@ -68,17 +68,33 @@ def data_front_page(stock):
 #     result = posts.insert_one(post_data)
 #     print('One post: {0}'.format(result.inserted_id))
 
-# Read excel/csv data
-def read_stock_rsi():
+# Define what csv data to use
+def define_stock_rsi():
     # df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv')
     # print list(df)
-    df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv', nrows=10)
+    if (my_stock == 'apple'):
+        stock = 'aapl data'
+        read_stock_rsi(stock)
+    elif (my_stock == 'google'):
+        stock = 'goog data'
+    elif (my_stock == 'facebook'):
+        stock = 'fb data'
+    elif (my_stock == 'amazon'):
+        stock = 'amzn data'
+    elif (my_stock == 's&p index'):
+        stock = 'spy data'
+    elif (my_stock == 'disney'):
+        stock = 'dis data'
+
+# Read the rsi data for whichever stock is chosen
+def read_stock_rsi(stock):
+    df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ stock + '/rsi_value.csv', nrows=10)
     df_10da['RSI']
     rsi_values_10da = df_10da['RSI'].mean()
-    df_20da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv', nrows=20)
+    df_20da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ stock + '/rsi_value.csv', nrows=20)
     df_20da['RSI']
     rsi_values_20da = df_20da['RSI'].mean()
-    df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv', nrows=50)
+    df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ stock + '/rsi_value.csv', nrows=50)
     rsi_values_50da = df_50da['RSI'].mean()
     print rsi_values_10da
     print rsi_values_20da
@@ -88,8 +104,11 @@ def read_stock_rsi():
     print rsi_change_20_10
     print rsi_change_50_10
 
+
+##  Command list to test  ##
 # add_user()
 # add_user_portfolio()
-my_stock = 'alphabet'
-current_data(my_stock)
-# read_stock_rsi()
+# my_stock = 'alphabet'
+# current_data(my_stock)
+my_stock = 'apple'
+define_stock_rsi()
