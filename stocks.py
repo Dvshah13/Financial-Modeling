@@ -99,3 +99,6 @@ adjust weights and biases through backtesting to create forecasts.
 choose about 20 widely held stocks and spy
 
 build lightweight react app (one page) to allow users to quickly parse through data and give analysis highlighting factors which are affecting stock price for both short and long term strategies
+
+
+sudo pip --no-cache-dir install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
