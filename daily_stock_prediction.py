@@ -35,18 +35,20 @@ case = int(input())
 
 # In[ ]:
 
+# CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
+
 if case == 1:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\Nifty Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 2:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\TCS Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 3:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\HCL Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 4:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\Infy Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 5:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\ONGC Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 6:
-    url = 'E:\Lecs\IIIT\SMAI\Project\Data\\Reliance Historical Daily.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 
 with open(url, 'r') as f:
     reader = csv.reader(f)
