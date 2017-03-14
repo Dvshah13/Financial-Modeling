@@ -11,14 +11,12 @@ from pybrain.datasets import *
 from pybrain.structure.modules import *
 #%matplotlib inline
 
-
 # In[ ]:
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
     return data, labels
-
 
 # In[ ]:
 
