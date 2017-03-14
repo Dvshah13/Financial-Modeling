@@ -38,17 +38,17 @@ case = int(input())
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 
 if case == 1:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/spy.csv'
 elif case == 2:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl.csv'
 elif case == 3:
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
 elif case == 4:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/fb.csv'
 elif case == 5:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/amzn.csv'
 elif case == 6:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/goog.csv'
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/dis.csv'
 
 with open(url, 'r') as f:
     reader = csv.reader(f)
