@@ -167,31 +167,31 @@ plt.show()
 #net.addConnection(FullConnection(net['in'], net['hidden'], name = 'c1'))
 #net.addConnection(FullConnection(net['hidden'], net['output'], name = 'c2'))
 #net.addRecurrentConnection(FullConnection(net['hidden'], net['hidden'], name='c3'))
-net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
-ds = ClassificationDataSet(5, 1)
-for i, j in zip(train_features, train_labels):
-    ds.addSample(i, j)
-
-
-# In[ ]:
-
-trainer = BackpropTrainer(net, ds)
-
-
-# In[ ]:
-
-epochs = 10
-for i in range(epochs):
-    trainer.train()
-
-
-# In[ ]:
-
-predicted = list()
-for i in test_features:
-    #print net.activate(i)
-    predicted.append(int(net.activate(i)>0.5))
-predicted = numpy.array(predicted)
+# net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
+# ds = ClassificationDataSet(5, 1)
+# for i, j in zip(train_features, train_labels):
+#     ds.addSample(i, j)
+#
+#
+# # In[ ]:
+#
+# trainer = BackpropTrainer(net, ds)
+#
+#
+# # In[ ]:
+#
+# epochs = 10
+# for i in range(epochs):
+#     trainer.train()
+#
+#
+# # In[ ]:
+#
+# predicted = list()
+# for i in test_features:
+#     #print net.activate(i)
+#     predicted.append(int(net.activate(i)>0.5))
+# predicted = numpy.array(predicted)
 
 
 # In[ ]:
