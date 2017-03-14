@@ -167,6 +167,7 @@ plt.show()
 #net.addConnection(FullConnection(net['in'], net['hidden'], name = 'c1'))
 #net.addConnection(FullConnection(net['hidden'], net['output'], name = 'c2'))
 #net.addRecurrentConnection(FullConnection(net['hidden'], net['hidden'], name='c3'))
+#
 # net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
 # ds = ClassificationDataSet(5, 1)
 # for i, j in zip(train_features, train_labels):
@@ -192,17 +193,17 @@ plt.show()
 #     #print net.activate(i)
 #     predicted.append(int(net.activate(i)>0.5))
 # predicted = numpy.array(predicted)
-
-
-# In[ ]:
-
+#
+#
+# # In[ ]:
+#
 # print "Accuracy: ", accuracy_score(test_labels, predicted)
 # print "Recall: ", recall_score(test_labels, predicted)
 # print "Precision: ", precision_score(test_labels, predicted)
-
-
+#
+#
 # In[ ]:
-
+#
 # step = numpy.arange(0, len(test_labels))
 # plt.subplot(211)
 # plt.xlim(-1, len(test_labels) + 1)
@@ -216,7 +217,7 @@ plt.show()
 # plt.xlabel('Days')
 # plt.ylabel('Predicted Values')
 # plt.show()
-# #plt.plot(plot_predicted)
+#plt.plot(plot_predicted)
 
 
 # In[ ]:
