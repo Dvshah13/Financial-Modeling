@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DMR Capital</title>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- App stylesheet -->
+  </head>
+<div class="container-fluid" id="account-login-container">
+    <div class="row login-form-header-row">
+        <div class="col-xs-12 header-row login-form-header typewriter-sm">
+            <h2>Log In</h2>
+        </div>
+    </div>
+    <div class="row messages">
+        <div class="col-xs-12">
+            <ul id="messages-list">
+                <li id="message"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-4"> </div>
+    <div class="row content-row login-form-content-row">
+        <div class="col-xs-4 login-form-content">
+            <form class="login" method="POST" action="/login">
+                <div class="form-group email">
+                    <input id="email-login" type="text" name="email" placeholder="email" minlength="2" required>
+                </div>
+                <div class="form-group password">
+                    <input id="password-login" type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+        </div>
+        <div class="header-row col-xs-12 create-account-link">
+            <a href="/user/register">Create an account</a>
+        </div>
+    </div>
+    <div class="col-xs-4"> </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Minified Marked for realtime markdown conversion -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+<!-- Latest compiled and minified Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Load layout JS -->
+</body>
+</html>

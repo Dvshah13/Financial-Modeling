@@ -1,0 +1,91 @@
+import csv
+import pandas as pd
+from yahoo_finance import Share
+from mongoengine import *
+import datetime
+
+
+# MongoDB Database connection
+connect('financial_modeling', host='localhost', port=27017)
+
+# Different Mongo collections/tables
+class User(Document):
+    name = StringField(required=True, max_length=200)
+    email = StringField(required=True, unique=True)
+    password = StringField(required=True, max_length=50)
+    cdate = DateTimeField(default=datetime.datetime.now)
+
+class User_portfolio(Document):
+    email = StringField(required=True, unique=True)
+    stock_name = ListField(required=True, max_length=200)
+
+
+# Get current data of stock from Yahoo Finance
+def current_data(stock):
+    if stock == 'apple':
+        stock = Share('AAPL')
+        data_front_page(stock)
+
+    elif stock == 'alphabet':
+        stock = Share('GOOG')
+        data_front_page(stock)
+
+def data_front_page(stock):
+    print stock.get_price()
+    print stock.get_percent_change()
+    print stock.get_volume()
+    print stock.get_ebitda()
+    print stock.get_50day_moving_avg()
+    print stock.get_percent_change_from_50_day_moving_average()
+    print stock.get_price_earnings_ratio()
+    print stock.get_price_earnings_growth_ratio()
+    print stock.get_short_ratio()
+
+# Add a new user
+def add_user():
+    new_user = User (
+        name= 'Deepak',
+        email= 'dvshah13@gmail.com',
+        password= 'test123'
+        )
+    new_user.save()
+    print(new_user)
+
+# Create new user portfolio
+def add_user_portfolio():
+    new_portfolio = User_portfolio (
+        email= 'dvshah13@gmail.com',
+        stock_name= [apple, google]
+        )
+    new_portfolio.save()
+    print(new_portfolio)
+#
+# def stock_filters():
+#     posts = db.stock_filters
+#     post_data = {
+#         'Stock Name': 'apple',
+#         'filters': 'various filters'
+#     }
+#     result = posts.insert_one(post_data)
+#     print('One post: {0}'.format(result.inserted_id))
+
+# Read excel/csv data
+def read_stock_rsi():
+    df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv', skipinitialspace=True, usecols=fields)
+    print df.keys()
+
+def read_stock_rsi():
+
+
+# add_user()
+# add_user_portfolio()
+# my_stock = 'apple'
+# current_data(my_stock)
+read_stock_rsi()
+# def get_data(filename):
+# 	with open(filename, 'r') as csvfile:
+# 		csvFileReader = csv.reader(csvfile)
+# 		next(csvFileReader)	# skipping column names
+# 		for row in csvFileReader:
+# 			dates.append(int(row[0].split('-')[0]))
+# 			rsi.append(float(row[1]))
