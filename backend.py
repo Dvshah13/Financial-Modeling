@@ -21,25 +21,25 @@ from yahoo_finance import Share
 
 # Get current data of stock from Yahoo Finance
 def current_data(stock):
-    if stock == 'apple':
+    if stock == 'aapl':
         symbol = Share('AAPL')
         data_front_page(stock, symbol)
-    elif stock == 'alphabet':
+    elif stock == 'goog':
         symbol = Share('GOOG')
         data_front_page(stock, symbol)
-    elif stock == 's&p index':
+    elif stock == 'spy':
         symbol = Share('SPY')
         data_front_page(stock, symbol)
-    elif stock == 'facebook':
+    elif stock == 'fb':
         symbol = Share('fb')
         data_front_page(stock, symbol)
-    elif stock == 'amazon':
+    elif stock == 'amzn':
         symbol = Share('AMZN')
         data_front_page(stock, symbol)
-    elif stock == 'disney':
+    elif stock == 'dis':
         symbol = Share('dis')
         data_front_page(stock, symbol)
-    elif stock == 'microsoft':
+    elif stock == 'msft':
         symbol = Share('msft')
         data_front_page(stock, symbol)
 
@@ -86,25 +86,25 @@ def data_front_page(stock, symbol):
 def define_stock_rsi(stock):
     # df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv')
     # print list(df)
-    if (stock == 'apple'):
+    if (stock == 'aapl'):
         my_stock = 'aapl data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'alphabet'):
+    elif (stock == 'goog'):
         my_stock = 'goog data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'facebook'):
+    elif (stock == 'fb'):
         my_stock = 'fb data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'amazon'):
+    elif (stock == 'amzn'):
         my_stock = 'amzn data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 's&p index'):
+    elif (stock == 'spy'):
         my_stock = 'spy data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'disney'):
+    elif (stock == 'dis'):
         my_stock = 'dis data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'microsoft'):
+    elif (stock == 'msft'):
         my_stock = 'msft data'
         read_stock_rsi(stock, my_stock)
 
@@ -132,6 +132,6 @@ def read_stock_rsi(stock, my_stock):
 # add_user_portfolio()
 # my_stock = 'alphabet'
 # current_data(my_stock)
-stock = 'alphabet'
+stock = 'goog'
 current_data(stock)
 define_stock_rsi(stock)

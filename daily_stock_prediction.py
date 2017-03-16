@@ -37,19 +37,19 @@ case = int(input())
 
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 
-if case == 1:
+if stock == 'spy':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'
-elif case == 2:
+elif stock == 'apple':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'
-elif case == 3:
+elif stock == 'google':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'
-elif case == 4:
+elif stock == 'facebook':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'
-elif case == 5:
+elif stock == 'amazon':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'
-elif case == 6:
+elif stock == 'disney':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'
-elif case == 7:
+elif stock == 'microsoft':
     url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'
 
 with open(url, 'r') as f:

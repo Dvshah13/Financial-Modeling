@@ -37,12 +37,26 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     new_user = User.objects.get(email = request.form['email'])
+    session['email'] = new_user.email
+    session['first_name'] = new_user.first_name
     print new_user.first_name
     if (bcrypt.check_password_hash(new_user.password, request.form['password'])):
         print new_user.first_name
-        return new_user.first_name
+        return render_template('portfolio_dashboard.html', email = email, first_name = first_name)
     else:
         return "Wrong Password"
+
+@app.route('/stock_data', methods=['GET', 'POST'])
+def stockInfo():
+    stock = request.json['stock_symbol']
+    print stock
+    return stock
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.clear()
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug = True)

@@ -61,18 +61,19 @@ body {
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3 class=navbar_name style="color: white">Hello Deepak!</h3>
+  <h3 class=navbar_name style="color: white">Hello {{ first_name }}!</h3>
   <a href="#" onclick="myAccFunc()">
   Your Portfolio <i class="fa fa-caret-down"></i>
   </button>
   <div id="demoAcc" class="w3-hide">
-      <ul id="my-dropdown">
-    <li><a href="/aapl">AAPL</a></li>
-    <li><a href="/amzn">AMZN</a></li>
-    <li><a href="/dis">DIS</a></li>
-    <li><a href="/fb">FB</a></li>
-    <li><a href="/goog">GOOG</a></li>
-    <li><a href="/msft">MSFT</a></li>
+      <ul>
+    <li><a href="/stock_data">AAPL</a></li>
+    <li><a href="/stock_data">AMZN</a></li>
+    <li><a href="/stock_data">DIS</a></li>
+    <li><a href="/stock_data">FB</a></li>
+    <li><a href="/stock_data">GOOG</a></li>
+    <li><a href="/stock_data">MSFT</a></li>
+    <li><a href="/stock_data">SPY</a></li>
     </ul>
   </div>
   <a href="/spy">S&P 500 Index</a>
@@ -81,8 +82,11 @@ body {
 </div>
 
 <div id="main">
-  <h2>Market Snapshot</h2>
-  <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
+  <h2>AAPL</h2>
+  <p>Yahoo Finance Data:</p>
+  <p>
+
+  </p>
 </div>
 
 <script>
@@ -108,21 +112,6 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     document.body.style.backgroundColor = "white";
 }
-$('#my-dropdown li').click(function () {
-        var index = $(this).index();
-        var stock_symbol = $(this).text();
-        $.ajax({
-            type: 'POST',
-            url: '/stock_data',
-            data: '{ stock_symbol: stock_symbol }',
-            contentType: 'application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-            }
-        });
-
-    });
 </script>
 
 </body>

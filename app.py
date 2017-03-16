@@ -11,7 +11,7 @@ csrf(app)
 
 @app.route('/')
 def index():
-    return render_template('landing_page.html')
+    return render_template('login.html')
 
 @app.route('/new_user', methods=['GET', 'POST'])
 def create_user():
