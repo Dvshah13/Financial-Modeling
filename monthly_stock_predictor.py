@@ -35,21 +35,21 @@ case = int(input())
 
 
 # In[156]:
-
-if case == 1:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/spy.csv'
-elif case == 2:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/aapl.csv'
-elif case == 3:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/goog.csv'
-elif case == 4:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/fb.csv'
-elif case == 5:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'
-elif case == 6:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'
-elif case == 7:
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'
+def stockData(stock):
+    if case == 'spy':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/spy.csv'
+    elif case == 'aapl':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/aapl.csv'
+    elif case == 'goog':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/goog.csv'
+    elif case == 'fb':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/fb.csv'
+    elif case == 'amzn':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'
+    elif case == 'dis':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'
+    elif case == 'msft':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'
 
 with open(url, 'r') as f:
     reader = csv.reader(f)

@@ -32,7 +32,7 @@ def login():
                 session['email_user'] = {'email': this_user.email}
                 session['first_name_user'] = {'first_name':this_user.first_name}
                 flash('You were logged in')
-                return render_template('dashboard.html', first_name=session.get('first_name_user'), email=session.get('email_user'))
+                return render_template('portfolio_dashboard.html', first_name=session.get('first_name_user'), email=session.get('email_user'))
         except:
             flash('User does not exist')
     return render_template('new_user.html', error=error)

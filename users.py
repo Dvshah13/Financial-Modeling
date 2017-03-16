@@ -1,10 +1,13 @@
-from flask import Flask, request, session, redirect, render_template
+from flask import Flask, request, session, redirect, render_template, jsonify
 from flask.ext.bcrypt import Bcrypt
 import logging
 from mongoengine import *
 import datetime
+from flask_restful import reqparse
+import json
 
 app = Flask(__name__)
+app.secret_key = 'whoathere'
 bcrypt = Bcrypt(app)
 
 # MongoDB Database connection
@@ -20,7 +23,7 @@ class User(Document):
 
 @app.route('/')
 def index():
-    return render_template('register.html')
+    return render_template('login.html')
 
 @app.route('/submit', methods=['GET', 'POST'])
 def register():
@@ -39,19 +42,19 @@ def login():
     new_user = User.objects.get(email = request.form['email'])
     session['email'] = new_user.email
     session['first_name'] = new_user.first_name
-    print new_user.first_name
     if (bcrypt.check_password_hash(new_user.password, request.form['password'])):
         print new_user.first_name
-        return render_template('portfolio_dashboard.html', email = email, first_name = first_name)
+        return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
     else:
         return "Wrong Password"
 
 @app.route('/stock_data', methods=['GET', 'POST'])
 def stockInfo():
-    stock = request.json['stock_symbol']
-    print stock
-    return stock
-
+    if request.method == 'POST':
+        data = request.json
+        stock = data['stock_symbol']
+        print stock
+    return 'Yes'
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
