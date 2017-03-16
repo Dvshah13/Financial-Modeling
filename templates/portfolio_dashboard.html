@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <style>
 body {
     font-family: "Lato", sans-serif;
@@ -53,22 +55,44 @@ body {
 </style>
 </head>
 <body>
-
+<div id="header">
+    <span style="font-size:35px;cursor:pointer" onclick="openNav()">&#9776; </span>
+</div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <h3 class=navbar_name style="color: white">Hello Deepak!</h3>
+  <a href="#" onclick="myAccFunc()">
+  Portfolio <i class="fa fa-caret-down"></i>
+  </button>
+  <div id="demoAcc" class="w3-hide">
+    <a href="#">AAPL</a>
+    <a href="#">AMZN</a>
+    <a href="#">DIS</a>
+    <a href="#">GOOG</a>
+    <a href="#">MSFT</a>
+  </div>
+  <a href="#">S&P 500 Index</a>
+  <a href="#">Profile</a>
+
 </div>
 
 <div id="main">
   <h2>Sidenav Push Example</h2>
   <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 </div>
 
 <script>
+function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-show", "");
+    }
+}
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
