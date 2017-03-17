@@ -44,17 +44,17 @@ def current_data(stock):
         data_front_page(stock, symbol)
 
 def data_front_page(symbol):
-    current_price = symbol.get_price()
-    per_change = symbol.get_percent_change()
-    curr_volume = symbol.get_volume()
-    ebitda = symbol.get_ebitda()
-    curr_50day = symbol.get_50day_moving_avg()
-    curr_perchan_50 = symbol.get_percent_change_from_50_day_moving_average()
-    pe_ratio = symbol.get_price_earnings_ratio()
-    peg_ratio = symbol.get_price_earnings_growth_ratio()
-    short_ratio = symbol.get_short_ratio()
-    data = {'current_price':current_price, 'per_change':per_change, 'curr_volume':curr_volume, 'ebitda':ebitda, 'curr_50day':curr_50day, 'curr_perchan_50':curr_perchan_50, 'pe_ratio':pe_ratio, 'peg_ratio':peg_ratio, 'short_ratio':short_ratio}
-    return data
+    current_price = Share(symbol).get_price()
+    per_change = Share(symbol).get_percent_change()
+    curr_volume = Share(symbol).get_volume()
+    ebitda = Share(symbol).get_ebitda()
+    curr_50day = Share(symbol).get_50day_moving_avg()
+    curr_perchan_50 = Share(symbol).get_percent_change_from_50_day_moving_average()
+    pe_ratio = Share(symbol).get_price_earnings_ratio()
+    peg_ratio = Share(symbol).get_price_earnings_growth_ratio()
+    short_ratio = Share(symbol).get_short_ratio()
+    data_set1 = {'current_price':current_price, 'per_change':per_change, 'curr_volume':curr_volume, 'ebitda':ebitda, 'curr_50day':curr_50day, 'curr_perchan_50':curr_perchan_50, 'pe_ratio':pe_ratio, 'peg_ratio':peg_ratio, 'short_ratio':short_ratio}
+    return data_set1
 
 # Add a new user
 # def add_user():
@@ -85,33 +85,34 @@ def data_front_page(symbol):
 #     print('One post: {0}'.format(result.inserted_id))
 
 # Define what csv data to use
-def define_stock_rsi(stock):
+
+def define_stock_rsi(symbol):
     # df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv')
     # print list(df)
-    if (stock == 'AAPL'):
+    if (symbol == 'AAPL'):
         my_stock = 'aapl data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'GOOG'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'GOOG'):
         my_stock = 'goog data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'FB'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'FB'):
         my_stock = 'fb data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'AMZN'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'AMZN'):
         my_stock = 'amzn data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'SPY'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'SPY'):
         my_stock = 'spy data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'DIS'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'DIS'):
         my_stock = 'dis data'
-        read_stock_rsi(stock, my_stock)
-    elif (stock == 'MSFT'):
+        read_stock_rsi(my_stock)
+    elif (symbol == 'MSFT'):
         my_stock = 'msft data'
-        read_stock_rsi(stock, my_stock)
+        read_stock_rsi(my_stock)
 
 # Read the rsi data for whichever stock is chosen
-def read_stock_rsi(stock, my_stock):
+def read_stock_rsi(my_stock):
     df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ my_stock + '/rsi_value.csv', nrows=10)
     df_10da['RSI']
     rsi_values_10da = df_10da['RSI'].mean()
@@ -120,14 +121,16 @@ def read_stock_rsi(stock, my_stock):
     rsi_values_20da = df_20da['RSI'].mean()
     df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ my_stock + '/rsi_value.csv', nrows=50)
     rsi_values_50da = df_50da['RSI'].mean()
-    print stock, "RSI 10 day average: ", rsi_values_10da
-    print stock, "RSI 20 day average: ", rsi_values_20da
-    print stock, "RSI 50 day average: ", rsi_values_50da
-    rsi_change_20_10 = (((rsi_values_10da / rsi_values_20da)-1) * 100)
-    rsi_change_50_10 = (((rsi_values_10da / rsi_values_50da)-1) * 100)
-    print "This is the RSI percentage change from 20 to 10 day: ", rsi_change_20_10
-    print "This is the RSI percentage change from 50 to 10 day: ", rsi_change_50_10
-
+    print rsi_values_10da
+    print "Worked"
+    rsi_values_10_mean = rsi_values_10da
+    rsi_values_20_mean = rsi_values_20da
+    rsi_values_50_mean = rsi_values_50da
+    rsi_change_20_10 = (((rsi_values_10_mean / rsi_values_20_mean)-1) * 100)
+    rsi_change_50_10 = (((rsi_values_10_mean / rsi_values_50_mean)-1) * 100)
+    data_set2 = {'rsi_values_10_mean':rsi_values_10_mean, 'rsi_values_20_mean':rsi_values_20_mean, 'rsi_values_50_mean':rsi_values_50_mean, 'rsi_change_20_10':rsi_change_20_10, 'rsi_change_50_10':rsi_change_50_10 }
+    return data_set2
+    # print data_set2['rsi_change_50_10']
 
 ##  Command list to test  ##
 # add_user()
@@ -135,4 +138,4 @@ def read_stock_rsi(stock, my_stock):
 # my_stock = 'alphabet'
 # current_data(my_stock)
 # current_data(stock)
-# define_stock_rsi(stock)
+# define_stock_rsi(symbol)

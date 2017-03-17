@@ -58,10 +58,20 @@ def stockInfo():
 
 @app.route('/stock_data', methods=['GET'])
 def get_data_scripts():
-    stock = session.get('stock')
+    symbol = session.get('stock')
     import basic_stock_data
-    
-    return stock
+    session['data_set1'] = basic_stock_data.data_front_page(symbol)
+    # session['data_set2'] = basic_stock_data.define_stock_rsi(symbol)
+    results_set1 = session.get('data_set1')
+    # results_set2 = session.get('data_set2')
+    print results_set1['current_price']
+    # print results_set2['rsi_change_50_10']
+    import daily_stock_prediction
+    session['data_set2'] = daily_stock_prediction.stockData(symbol)
+    results_set2 = session.get('data_set2')
+    print results_set2['predicted']
+    return "Worked"
+
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
