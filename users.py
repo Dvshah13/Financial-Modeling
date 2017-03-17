@@ -46,16 +46,22 @@ def login():
         print new_user.first_name
         return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
     else:
-        return "Wrong Password"
+        return "Wrong Password, click back to try again."
 
-@app.route('/stock_data', methods=['GET', 'POST'])
+@app.route('/stock_data', methods=['POST'])
 def stockInfo():
-    if request.method == 'POST':
-        data = request.json
-        stock = data['stock_symbol']
-        print data
+    data = request.json
+    stock = data['stock_symbol']
+    session['stock'] = stock
+    print stock
+    return "Yes"
 
-    return 'Yes'
+@app.route('/stock_data', methods=['GET'])
+def get_data_scripts():
+    stock = session.get('stock')
+    import basic_stock_data
+    
+    return stock
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():

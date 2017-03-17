@@ -21,38 +21,40 @@ from yahoo_finance import Share
 
 # Get current data of stock from Yahoo Finance
 def current_data(stock):
-    if stock == 'aapl':
+    if stock == 'AAPL':
         symbol = Share('AAPL')
-        data_front_page(stock, symbol)
-    elif stock == 'goog':
+        data_front_page(symbol)
+    elif stock == 'GOOG':
         symbol = Share('GOOG')
-        data_front_page(stock, symbol)
-    elif stock == 'spy':
+        data_front_page(symbol)
+    elif stock == 'SPY':
         symbol = Share('SPY')
-        data_front_page(stock, symbol)
-    elif stock == 'fb':
-        symbol = Share('fb')
-        data_front_page(stock, symbol)
-    elif stock == 'amzn':
+        data_front_page(symbol)
+    elif stock == 'FB':
+        symbol = Share('FB')
+        data_front_page(symbol)
+    elif stock == 'AMZN':
         symbol = Share('AMZN')
-        data_front_page(stock, symbol)
-    elif stock == 'dis':
-        symbol = Share('dis')
-        data_front_page(stock, symbol)
-    elif stock == 'msft':
-        symbol = Share('msft')
+        data_front_page(symbol)
+    elif stock == 'DIS':
+        symbol = Share('DIS')
+        data_front_page(symbol)
+    elif stock == 'MSFT':
+        symbol = Share('MSFT')
         data_front_page(stock, symbol)
 
-def data_front_page(stock, symbol):
-    print stock, "current price: ", symbol.get_price()
-    print stock, "day percent change: ", symbol.get_percent_change()
-    print stock, "daily volume: ", symbol.get_volume()
-    print stock, "EBITDA: ", symbol.get_ebitda()
-    print stock, "50 day sma: ", symbol.get_50day_moving_avg()
-    print stock, "percent change from 50 day sma: ", symbol.get_percent_change_from_50_day_moving_average()
-    print stock, "price to earnings ratio: ", symbol.get_price_earnings_ratio()
-    print stock, "price to earnings growth ratio: ", symbol.get_price_earnings_growth_ratio()
-    print stock, "short ratio: ", symbol.get_short_ratio()
+def data_front_page(symbol):
+    current_price = symbol.get_price()
+    per_change = symbol.get_percent_change()
+    curr_volume = symbol.get_volume()
+    ebitda = symbol.get_ebitda()
+    curr_50day = symbol.get_50day_moving_avg()
+    curr_perchan_50 = symbol.get_percent_change_from_50_day_moving_average()
+    pe_ratio = symbol.get_price_earnings_ratio()
+    peg_ratio = symbol.get_price_earnings_growth_ratio()
+    short_ratio = symbol.get_short_ratio()
+    data = {'current_price':current_price, 'per_change':per_change, 'curr_volume':curr_volume, 'ebitda':ebitda, 'curr_50day':curr_50day, 'curr_perchan_50':curr_perchan_50, 'pe_ratio':pe_ratio, 'peg_ratio':peg_ratio, 'short_ratio':short_ratio}
+    return data
 
 # Add a new user
 # def add_user():
@@ -86,25 +88,25 @@ def data_front_page(stock, symbol):
 def define_stock_rsi(stock):
     # df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/aapl data/rsi_value.csv')
     # print list(df)
-    if (stock == 'aapl'):
+    if (stock == 'AAPL'):
         my_stock = 'aapl data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'goog'):
+    elif (stock == 'GOOG'):
         my_stock = 'goog data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'fb'):
+    elif (stock == 'FB'):
         my_stock = 'fb data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'amzn'):
+    elif (stock == 'AMZN'):
         my_stock = 'amzn data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'spy'):
+    elif (stock == 'SPY'):
         my_stock = 'spy data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'dis'):
+    elif (stock == 'DIS'):
         my_stock = 'dis data'
         read_stock_rsi(stock, my_stock)
-    elif (stock == 'msft'):
+    elif (stock == 'MSFT'):
         my_stock = 'msft data'
         read_stock_rsi(stock, my_stock)
 
