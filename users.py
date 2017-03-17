@@ -53,7 +53,8 @@ def stockInfo():
     if request.method == 'POST':
         data = request.json
         stock = data['stock_symbol']
-        print stock
+        print data
+
     return 'Yes'
 
 @app.route('/logout', methods=['GET', 'POST'])

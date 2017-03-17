@@ -132,6 +132,5 @@ def read_stock_rsi(stock, my_stock):
 # add_user_portfolio()
 # my_stock = 'alphabet'
 # current_data(my_stock)
-stock = 'goog'
-current_data(stock)
-define_stock_rsi(stock)
+# current_data(stock)
+# define_stock_rsi(stock)
