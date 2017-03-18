@@ -72,6 +72,21 @@ def get_data_scripts():
     print results_set2['predicted']
     return "Worked"
 
+@app.route('/stock_data/d1', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = basic_stock_data.data_front_page(symbol)
+   #return in json format
+    return res.send(ret)
+
+@app.route('/stock_data/d2', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = daily_stock_prediction.stockData(symbol)
+   #return in json format
+    return res.send(ret)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
