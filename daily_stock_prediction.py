@@ -20,15 +20,15 @@ def multiple_days_forward(data, days):
 
 # In[ ]:
 
-data = list()
-print "Enter Company/Stock: "
-print "1. SPY"
-print "2. AAPL"
-print "3. GOOG"
-print "4. FB"
-print "5. AMZN"
-print "6. DIS"
-print "7. MSFT"
+# data = list()
+# print "Enter Company/Stock: "
+# print "1. SPY"
+# print "2. AAPL"
+# print "3. GOOG"
+# print "4. FB"
+# print "5. AMZN"
+# print "6. DIS"
+# print "7. MSFT"
 
 # case = int(input())
 
