@@ -20,7 +20,7 @@ def multiple_days_forward(data, days):
 
 # In[ ]:
 
-# data = list()
+data = list()
 # print "Enter Company/Stock: "
 # print "1. SPY"
 # print "2. AAPL"
@@ -30,27 +30,27 @@ def multiple_days_forward(data, days):
 # print "6. DIS"
 # print "7. MSFT"
 
-# case = int(input())
+symbol = 'AAPL'
 
 
 # In[ ]:
 
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
-def stockData(symbol):
-    if symbol == 'SPY':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'
-    elif symbol == 'AAPL':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'
-    elif symbol == 'GOOG':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'
-    elif symbol == 'FB':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'
-    elif symbol == 'AMZN':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'
-    elif symbol == 'DIS':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'
-    elif symbol == 'MSFT':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'
+
+if symbol == 'SPY':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'
+elif symbol == 'AAPL':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'
+elif symbol == 'GOOG':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'
+elif symbol == 'FB':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'
+elif symbol == 'AMZN':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'
+elif symbol == 'DIS':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'
+elif symbol == 'MSFT':
+    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'
 
 with open(url, 'r') as f:
     reader = csv.reader(f)
@@ -138,26 +138,26 @@ print "Actual: ", test_labels
 print "Accuracy: ", accuracy
 print "Precision: ", precision
 print "Recall: ", recall
-data_algo_daily = {'predicted': predicted, 'test_labels': test_labels, 'accuracy': accuracy, 'precision': precision, 'recall': recall }
-return data_algo_daily
+# data_algo_daily = {'predicted': predicted, 'test_labels': test_labels, 'accuracy': accuracy, 'precision': precision, 'recall': recall }
+# return data_algo_daily
 
 
 # In[ ]:
 
-# step = numpy.arange(0, len(test_labels))
-# plt.subplot(211)
-# plt.xlim(-1, len(test_labels) + 1)
-# plt.ylim(-1, 2)
-# plt.ylabel('Actual Values')
-# plt.plot(step, test_labels, drawstyle = 'step')
-# plt.subplot(212)
-# plt.xlim(-1, len(test_labels) + 1)
-# plt.ylim(-1, 2)
-# plt.xlabel('Days')
-# plt.ylabel('Predicted Values')
-# plt.plot(step, predicted, drawstyle = 'step')
-# plt.show()
-#plt.plot(plot_predicted)
+step = numpy.arange(0, len(test_labels))
+plt.subplot(211)
+plt.xlim(-1, len(test_labels) + 1)
+plt.ylim(-1, 2)
+plt.ylabel('Actual Values')
+plt.plot(step, test_labels, drawstyle = 'step')
+plt.subplot(212)
+plt.xlim(-1, len(test_labels) + 1)
+plt.ylim(-1, 2)
+plt.xlabel('Days')
+plt.ylabel('Predicted Values')
+plt.plot(step, predicted, drawstyle = 'step')
+plt.show()
+plt.plot(plot_predicted)
 
 
 # In[ ]:
