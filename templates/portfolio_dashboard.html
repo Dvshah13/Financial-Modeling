@@ -117,7 +117,7 @@ $('#my-dropdown li').click(function () {
             type: 'POST',
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            url: '/stock_data',
+            url: '/basic_stock_data.py',
             data: JSON.stringify({ stock_symbol: stock_symbol }),
             success: function (data) {
                 console.log(data);

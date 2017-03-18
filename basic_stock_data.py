@@ -17,8 +17,8 @@ from yahoo_finance import Share
 # class User_portfolio(Document):
 #     email = StringField(required=True, unique=True)
 #     stock_name = ListField(required=True, max_length=200)
-
-
+data = request.json
+stock = data['stock_symbol']
 # Get current data of stock from Yahoo Finance
 def current_data(stock):
     if stock == 'AAPL':
