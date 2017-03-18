@@ -88,6 +88,38 @@ def get_data_scripts():
    #return in json format
     return res.send(ret)
 
+@app.route('/stock_data/d2', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = daily_stock_prediction.stockData(symbol)
+   #return in json format
+    return res.send(ret)
+
+@app.route('/stock_data/d3', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = daily_stock_prediction.stockData(symbol)
+   #return in json format
+    return res.send(ret)
+
+@app.route('/stock_data/d4', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = daily_stock_prediction.stockData(symbol)
+   #return in json format
+    return res.send(ret)
+
+@app.route('/stock_data/d5', methods=['GET'])
+def get_data_scripts():
+   symbol = session.get('stock')
+   import basic_stock_data
+   var ret = daily_stock_prediction.stockData(symbol)
+   #return in json format
+    return res.send(ret)
+
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()
