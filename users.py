@@ -91,7 +91,7 @@ def get_data_scripts():
 @app.route('/stock_data/d3', methods=['GET'])
 def get_data_scripts():
    symbol = session.get('stock')
-   import basic_stock_data
+   import daily_stock_prediction
    var ret = daily_stock_prediction.stock_data(symbol)
    #return in json format
    return res.send(ret)
@@ -99,18 +99,18 @@ def get_data_scripts():
 @app.route('/stock_data/d4', methods=['GET'])
 def get_data_scripts():
    symbol = session.get('stock')
-   import basic_stock_data
-   var ret = daily_stock_prediction.stockData(symbol)
+   import weekly_stock_predictor
+   var ret = weekly_stock_prediction.stockData(symbol)
    #return in json format
    return res.send(ret)
 
 @app.route('/stock_data/d5', methods=['GET'])
 def get_data_scripts():
    symbol = session.get('stock')
-   import basic_stock_data
-   var ret = daily_stock_prediction.stockData(symbol)
+   import monthly_stock_predictor
+   var ret = monthly_stock_prediction.stockData(symbol)
    #return in json format
-    return res.send(ret)
+   return res.send(ret)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
