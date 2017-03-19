@@ -130,27 +130,27 @@ $('#my-dropdown li').click(function () {
             });
         $.getJSON("/stock_data/d1", function(result){
             $.each(result, function(i, field){
-                $("#stockData1").append(field + " ").removeClass("hidden");
+                $("#stockData1").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d2", function(result){
             $.each(result, function(i, field){
-                $("#stockData2").append(field + " ").removeClass("hidden");
+                $("#stockData2").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d3", function(result){
             $.each(result, function(i, field){
-                $("#stockData3").append(field + " ").removeClass("hidden");
+                $("#stockData3").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d4", function(result){
             $.each(result, function(i, field){
-                $("#stockData4").append(field + " ").removeClass("hidden");
+                $("#stockData4").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d5", function(result){
             $.each(result, function(i, field){
-                $("#stockData5").append(field + " ").removeClass("hidden");
+                $("#stockData5").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
     });

@@ -11,17 +11,17 @@ app.secret_key = 'whoathere'
 bcrypt = Bcrypt(app)
 
 # MongoDB Database connection Locally
-# connect('financial_modeling', host='localhost', port=27017)
+connect('financial_modeling', host='localhost', port=27017)
 
 # MongoDB Remote hosting
-app.config["MONGODB_DB"] = 'deepak_db'
-connect(
-    'deepak_db',
-    username='dvshah13',
-    password='rockets13',
-    host='mongodb://<dvshah13>:<rockets13>@ds161099.mlab.com:61099/deepak_db',
-    port=61099
-)
+# app.config["MONGODB_DB"] = 'deepak_db'
+# connect(
+#     'deepak_db',
+#     username='dvshah13',
+#     password='rockets13',
+#     host='mongodb://<dvshah13>:<rockets13>@ds161099.mlab.com:61099/deepak_db',
+#     port=61099
+# )
 
 # Different Mongo collections/tables
 class User(Document):

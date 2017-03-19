@@ -30,8 +30,8 @@ def multiple_days_forward(data, days):
 # print "6. DIS"
 # print "7. MSFT"
 
-# In[ ]:
 
+# In[ ]:
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 def stock_data(symbol):
     data = list()
