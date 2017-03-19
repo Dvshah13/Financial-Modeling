@@ -64,41 +64,41 @@ class Stocks:
         return True
 
 
-Variables and Objectives
-
-stock name
-stock symbol
-stock price
-stock RSI over 3 month period
-stock 20 day SMA (% above/below)
-stock 50 day SMA (% above/below)
-stock 200 day SMA (% above/below)
-stock volume 20 day (% above/below)
-stock volume 50 day (% above/below)
-stock outsized day move (% above/below 2 std dev)
-stock earnings  1. Beat revenue, eps
-                2. Beat eps
-                3. Beat revenue
-                4. Meets both
-                5. Beats one, miss on the other
-                6. Misses both
-
-                1. Beats and raises guidance
-                2. Beats guidance
-                3. Meets guidance
-                4. Misses
-stock dividend percentage (absolute and relative to peers) and any buyback programs in place
-stock sentiment 1. Analysts ratings (buy, sell, hold)
-                2. Stock twits up/down
-stock leadership and vision (comparision against industry peers)
-us macro sentiment via federal reserve sentiment (fed fund futures) and rate picture, spy analysis and trend, usd 3 month trend
-world economy (china, japan, eu, uk) and world macro sentiment
-
-analyze for large moves, std. deviations away from norm are weighted heavier.
-adjust weights and biases through backtesting to create forecasts.
-choose about 20 widely held stocks and spy
-
-build lightweight react app (one page) to allow users to quickly parse through data and give analysis highlighting factors which are affecting stock price for both short and long term strategies
-
-
-sudo pip --no-cache-dir install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
+# Variables and Objectives
+#
+# stock name
+# stock symbol
+# stock price
+# stock RSI over 3 month period
+# stock 20 day SMA (% above/below)
+# stock 50 day SMA (% above/below)
+# stock 200 day SMA (% above/below)
+# stock volume 20 day (% above/below)
+# stock volume 50 day (% above/below)
+# stock outsized day move (% above/below 2 std dev)
+# stock earnings  1. Beat revenue, eps
+#                 2. Beat eps
+#                 3. Beat revenue
+#                 4. Meets both
+#                 5. Beats one, miss on the other
+#                 6. Misses both
+#
+#                 1. Beats and raises guidance
+#                 2. Beats guidance
+#                 3. Meets guidance
+#                 4. Misses
+# stock dividend percentage (absolute and relative to peers) and any buyback programs in place
+# stock sentiment 1. Analysts ratings (buy, sell, hold)
+#                 2. Stock twits up/down
+# stock leadership and vision (comparision against industry peers)
+# us macro sentiment via federal reserve sentiment (fed fund futures) and rate picture, spy analysis and trend, usd 3 month trend
+# world economy (china, japan, eu, uk) and world macro sentiment
+#
+# analyze for large moves, std. deviations away from norm are weighted heavier.
+# adjust weights and biases through backtesting to create forecasts.
+# choose about 20 widely held stocks and spy
+#
+# build lightweight react app (one page) to allow users to quickly parse through data and give analysis highlighting factors which are affecting stock price for both short and long term strategies
+#
+#
+# sudo pip --no-cache-dir install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
