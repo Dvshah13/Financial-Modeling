@@ -20,7 +20,7 @@ def multiple_days_forward(data, days):
 
 # In[ ]:
 
-data = list()
+# data = list()
 # print "Enter Company/Stock: "
 # print "1. SPY"
 # print "2. AAPL"

@@ -23,7 +23,15 @@ class User(Document):
 
 @app.route('/')
 def index():
+    return render_template('landing_page.html')
+
+@app.route('/login_page')
+def login_page():
     return render_template('login.html')
+
+@app.route('/register_page')
+def register_page():
+    return render_template('register.html')
 
 @app.route('/submit', methods=['GET', 'POST'])
 def register():
@@ -58,13 +66,13 @@ def stockInfo():
 
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
-   symbol = session.get('stock')
-   print symbol
-   import basic_stock_data
-   ret = basic_stock_data.data_front_page(symbol)
-   print ret
-   #return in json format
-   return jsonify(ret)
+    symbol = session.get('stock')
+    print symbol
+    import basic_stock_data
+    ret = basic_stock_data.data_front_page(symbol)
+    print ret
+    #return in json format
+    return jsonify(ret)
 
 @app.route('/stock_data/d2', methods=['GET'])
 def get_twitter_scripts():
