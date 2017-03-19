@@ -60,7 +60,6 @@ Pygments==2.2.0
 PyGreSQL==5.0.3
 pymongo==3.4.0
 pyOpenSSL==0.13.1
-pyparsing==2.0.1
 python-dateutil==2.6.0
 pytz==2013.7
 PyYAML==3.12
@@ -69,7 +68,6 @@ qtconsole==4.2.1
 requests==2.13.0
 requests-oauthlib==0.8.0
 scandir==1.5
-scikit-learn==0.18.1
 scipy==0.13.0b1
 simplegeneric==0.8.1
 simplejson==3.10.0
@@ -78,7 +76,6 @@ six==1.10.0
 terminado==0.6
 testpath==0.3
 textblob==0.12.0
-Theano==0.8.2
 tornado==4.4.2
 traitlets==4.3.2
 tweepy==3.5.0
