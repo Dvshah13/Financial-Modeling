@@ -68,7 +68,6 @@ qtconsole==4.2.1
 requests==2.13.0
 requests-oauthlib==0.8.0
 scandir==1.5
-scipy==0.13.0b1
 simplegeneric==0.8.1
 simplejson==3.10.0
 singledispatch==3.4.0.3
