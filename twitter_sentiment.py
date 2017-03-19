@@ -17,20 +17,20 @@ neg_count = 0
 pos_count = 0
 
 # Retrieve Tweets
-def findStock(stock):
-    if stock == 'aapl':
+def findStock(symbol):
+    if symbol == 'AAPL':
         public_tweets = api.search('$aapl')
-    elif stock == 'goog':
+    elif symbol == 'GOOG':
         public_tweets = api.search('$goog')
-    elif stock == 'spy':
+    elif symbol == 'SPY':
         public_tweets = api.search('$spy')
-    elif stock == 'dis':
+    elif symbol == 'DIS':
         public_tweets = api.search('$dis')
-    elif stock == 'fb':
+    elif symbol == 'FB':
         public_tweets = api.search('$fb')
-    elif stock == 'amzn':
+    elif symbol == 'AMZN':
         public_tweets = api.search('$amzn')
-    elif stock == 'msft':
+    elif symbol == 'MSFT':
         public_tweets = api.search('$msft')
 
     # Find tweets and catorgorize them
