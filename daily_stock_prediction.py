@@ -12,7 +12,7 @@ from pybrain.structure.modules import *
 #%matplotlib inline
 
 # In[ ]:
-
+#
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
@@ -30,134 +30,131 @@ data = list()
 # print "6. DIS"
 # print "7. MSFT"
 
-symbol = 'AAPL'
-
-
 # In[ ]:
 
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
+def stock_data(symbol):
+    data = list()
+    if symbol == 'SPY':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'
+    elif symbol == 'AAPL':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'
+    elif symbol == 'GOOG':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'
+    elif symbol == 'FB':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'
+    elif symbol == 'AMZN':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'
+    elif symbol == 'DIS':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'
+    elif symbol == 'MSFT':
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'
 
-if symbol == 'SPY':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'
-elif symbol == 'AAPL':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'
-elif symbol == 'GOOG':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'
-elif symbol == 'FB':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'
-elif symbol == 'AMZN':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'
-elif symbol == 'DIS':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'
-elif symbol == 'MSFT':
-    url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'
-
-with open(url, 'r') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        data.append(row)
-data = numpy.array(data)
-data = data[1:, 1:]
-data = data.astype(float)
-labels = ((data[:, 3] - data[:, 0]) > 0).astype(int)
-data, labels = multiple_days_forward(data, 1)
-print numpy.shape(labels)
-print numpy.shape(data)
-
-
-# In[ ]:
-
-def t_high(t, X):
-    return max(X[:-t])
+    with open(url, 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            data.append(row)
+    data = numpy.array(data)
+    data = data[1:, 1:]
+    data = data.astype(float)
+    labels = ((data[:, 3] - data[:, 0]) > 0).astype(int)
+    data, labels = multiple_days_forward(data, 1)
+    print numpy.shape(labels)
+    print numpy.shape(data)
 
 
-# In[ ]:
+    # In[ ]:
 
-def t_low(t, X):
-    return min(X[:-t])
-
-
-# In[ ]:
-
-def volume_high(t, X):
-    return max(X[:-t])
+    def t_high(t, X):
+        return max(X[:-t])
 
 
-# In[ ]:
+    # In[ ]:
 
-def volume_low(t, X):
-    return min(X[:-t])
-
-
-# In[ ]:
-
-def extract_features(data, indices):
-    #remove the volume feature because of 0's
-    data = data[:, [0, 1, 2, 3, 5]]
-    #remove the first row because it is a header
-    data2 = data[1:, :]
-    features = data[:-1] - data2
-    Phigh = t_high(5, data[:, 1])
-    Plow = t_low(5, data[:, 2])
-    vhigh = volume_high(5, data[:, 4])
-    vlow = volume_low(5, data[:, 4])
-    Odiff_by_highlow = features[:, 0]/ float(Phigh - Plow)
-    Cdiff_by_highlow = features[:, 1]/float(Phigh - Plow)
-    mov_avg_by_data = list()
-    for i in range(len(features)):
-        mov_avg_by_data.append(numpy.mean(data[:i+1, :], axis = 0)/data[i, :])
-    mov_avg_by_data = numpy.array(mov_avg_by_data)
-    features = numpy.column_stack((features, Odiff_by_highlow, Cdiff_by_highlow, mov_avg_by_data))
-    print numpy.shape(features)
-    return features[:, indices], data
+    def t_low(t, X):
+        return min(X[:-t])
 
 
-# In[ ]:
+    # In[ ]:
 
-features, data = extract_features(data, [0, 1, 2, 3, 4])
-train_features = features[:1000]
-test_features = features[1000:]
-train_labels = labels[:1000]
-test_labels = labels[1000:-1]
+    def volume_high(t, X):
+        return max(X[:-t])
 
 
-# In[ ]:
+    # In[ ]:
 
-clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
-clf.fit(train_features, train_labels)
+    def volume_low(t, X):
+        return min(X[:-t])
 
 
-# In[ ]:
+    # In[ ]:
 
-predicted = clf.predict(test_features)
-accuracy = accuracy_score(test_labels, predicted)
-precision = recall_score(test_labels, predicted)
-recall = precision_score(test_labels, predicted)
-print "Predicted: ", predicted
-print "Actual: ", test_labels
-print "Accuracy: ", accuracy
-print "Precision: ", precision
-print "Recall: ", recall
+    def extract_features(data, indices):
+        #remove the volume feature because of 0's
+        data = data[:, [0, 1, 2, 3, 5]]
+        #remove the first row because it is a header
+        data2 = data[1:, :]
+        features = data[:-1] - data2
+        Phigh = t_high(5, data[:, 1])
+        Plow = t_low(5, data[:, 2])
+        vhigh = volume_high(5, data[:, 4])
+        vlow = volume_low(5, data[:, 4])
+        Odiff_by_highlow = features[:, 0]/ float(Phigh - Plow)
+        Cdiff_by_highlow = features[:, 1]/float(Phigh - Plow)
+        mov_avg_by_data = list()
+        for i in range(len(features)):
+            mov_avg_by_data.append(numpy.mean(data[:i+1, :], axis = 0)/data[i, :])
+        mov_avg_by_data = numpy.array(mov_avg_by_data)
+        features = numpy.column_stack((features, Odiff_by_highlow, Cdiff_by_highlow, mov_avg_by_data))
+        print numpy.shape(features)
+        return features[:, indices], data
+
+
+    # In[ ]:
+
+    features, data = extract_features(data, [0, 1, 2, 3, 4])
+    train_features = features[:1000]
+    test_features = features[1000:]
+    train_labels = labels[:1000]
+    test_labels = labels[1000:-1]
+
+
+    # In[ ]:
+
+    clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
+    clf.fit(train_features, train_labels)
+
+
+    # In[ ]:
+
+    predicted = clf.predict(test_features)
+    accuracy = accuracy_score(test_labels, predicted)
+    precision = recall_score(test_labels, predicted)
+    recall = precision_score(test_labels, predicted)
+    print "Predicted: ", predicted
+    print "Actual: ", test_labels
+    print "Accuracy: ", accuracy
+    print "Precision: ", precision
+    print "Recall: ", recall
 # data_algo_daily = {'predicted': predicted, 'test_labels': test_labels, 'accuracy': accuracy, 'precision': precision, 'recall': recall }
 # return data_algo_daily
-
-
+stock_data(symbol)
 # In[ ]:
 
-step = numpy.arange(0, len(test_labels))
-plt.subplot(211)
-plt.xlim(-1, len(test_labels) + 1)
-plt.ylim(-1, 2)
-plt.ylabel('Actual Values')
-plt.plot(step, test_labels, drawstyle = 'step')
-plt.subplot(212)
-plt.xlim(-1, len(test_labels) + 1)
-plt.ylim(-1, 2)
-plt.xlabel('Days')
-plt.ylabel('Predicted Values')
-plt.plot(step, predicted, drawstyle = 'step')
-plt.show()
-plt.plot(plot_predicted)
+# step = numpy.arange(0, len(test_labels))
+# plt.subplot(211)
+# plt.xlim(-1, len(test_labels) + 1)
+# plt.ylim(-1, 2)
+# plt.ylabel('Actual Values')
+# plt.plot(step, test_labels, drawstyle = 'step')
+# plt.subplot(212)
+# plt.xlim(-1, len(test_labels) + 1)
+# plt.ylim(-1, 2)
+# plt.xlabel('Days')
+# plt.ylabel('Predicted Values')
+# plt.plot(step, predicted, drawstyle = 'step')
+# plt.show()
+# plt.plot(plot_predicted)
 
 
 # In[ ]:
