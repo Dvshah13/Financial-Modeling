@@ -3,7 +3,7 @@ import csv
 import urllib
 from sklearn import *
 from sklearn.metrics import *
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure import *
