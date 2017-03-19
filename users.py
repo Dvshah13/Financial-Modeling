@@ -54,63 +54,53 @@ def stockInfo():
     stock = data['stock_symbol']
     session['stock'] = stock
     print stock
-    return "Yes"
-
-# @app.route('/stock_data', methods=['GET'])
-# def get_data_scripts():
-#     symbol = session.get('stock')
-#     import basic_stock_data
-#     session['data_set1'] = basic_stock_data.data_front_page(symbol)
-#     # session['data_set2'] = basic_stock_data.define_stock_rsi(symbol)
-#     results_set1 = session.get('data_set1')
-#     # results_set2 = session.get('data_set2')
-#     print results_set1['current_price']
-#     # print results_set2['rsi_change_50_10']
-#     import daily_stock_prediction
-#     session['data_set2'] = daily_stock_prediction.stockData(symbol)
-#     results_set2 = session.get('data_set2')
-#     print results_set2['predicted']
-#     return "Worked"
+    return "Worked"
 
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
    symbol = session.get('stock')
+   print symbol
    import basic_stock_data
-   var ret = basic_stock_data.data_front_page(symbol)
+   ret = basic_stock_data.data_front_page(symbol)
+   print ret
    #return in json format
-   return res.send(ret)
+   return jsonify(ret)
 
 @app.route('/stock_data/d2', methods=['GET'])
-def get_data_scripts():
+def get_twitter_scripts():
    symbol = session.get('stock')
    import twitter_sentiment
-   var ret = twitter_sentiment.findStock(symbol)
+   ret = twitter_sentiment.findStock(symbol)
+   print ret
    #return in json format
-   return res.send(ret)
-
+   return jsonify(ret)
+#
 @app.route('/stock_data/d3', methods=['GET'])
-def get_data_scripts():
+def get_daily_algo_scripts():
    symbol = session.get('stock')
    import daily_stock_prediction
-   var ret = daily_stock_prediction.stock_data(symbol)
+   ret = daily_stock_prediction.stock_data(symbol)
+   print ret
    #return in json format
-   return res.send(ret)
+   return jsonify(ret)
 
 @app.route('/stock_data/d4', methods=['GET'])
-def get_data_scripts():
+def get_weekly_algo_scripts():
    symbol = session.get('stock')
    import weekly_stock_predictor
-   var ret = weekly_stock_prediction.stockData(symbol)
+   ret = weekly_stock_predictor.stockData(symbol)
+   print ret
    #return in json format
-   return res.send(ret)
-
+   return jsonify(ret)
+#
 @app.route('/stock_data/d5', methods=['GET'])
-def get_data_scripts():
+def get_monthly_algo_scripts():
    symbol = session.get('stock')
    import monthly_stock_predictor
-   var ret = monthly_stock_prediction.stockData(symbol)
+   ret = monthly_stock_predictor.stockData(symbol)
+   print ret
    #return in json format
-   return res.send(ret)
+   return jsonify(ret)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():

@@ -130,12 +130,14 @@ def stockData(symbol):
     # In[164]:
 
     predicted = clf.predict(test_features)
-    Accuracy = accuracy_score(test_labels, predicted)
-    Precision = recall_score(test_labels, predicted)
-    Recall = precision_score(test_labels, predicted)
-    print "Accuracy: ", Accuracy
-    print "Precision: ", Precision
-    print "Recall: ", Recall
+    accuracy = accuracy_score(test_labels, predicted)
+    precision = recall_score(test_labels, predicted)
+    recall = precision_score(test_labels, predicted)
+    print "Accuracy: ", accuracy
+    print "Precision: ", precision
+    print "Recall: ", recall
+    data_algo_monthly = { 'accuracy': accuracy, 'precision': precision, 'recall': recall }
+    return data_algo_monthly
 
 
     # In[165]:

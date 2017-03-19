@@ -83,9 +83,11 @@ body {
 <div id="main">
   <h2>Market Snapshot</h2>
   <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
-  <div id='basicStockData'>
-
-  </div>
+  <div id='stockData1'></div>
+  <div id='stockData2'></div>
+  <div id='stockData3'></div>
+  <div id='stockData4'></div>
+  <div id='stockData5'></div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
@@ -126,63 +128,31 @@ $('#my-dropdown li').click(function () {
                     console.log(data);
                 }
             });
-        $.ajax({
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                url: '/stock_data/d1',
-                data: JSON.stringify({ stock_symbol: stock_symbol }),
-                success: function (data) {
-                    console.log(data);
-                    $('#basicStockData').html(ret);
-                    //load results for d1 in the correct spot
-                }
+        $.getJSON("/stock_data/d1", function(result){
+            $.each(result, function(i, field){
+                $("#stockData1").append(field + " ");
             });
-        // $.ajax({
-        //         type: 'POST',
-        //         contentType: 'application/json; charset=utf-8',
-        //         dataType: 'json',
-        //         url: '/stock_data/d2',
-        //         data: JSON.stringify({ stock_symbol: stock_symbol }),
-        //         success: function (data) {
-        //             console.log(data);
-        //             //load results for d1 in the correct spot
-        //         }
-        //     });
-        // $.ajax({
-        //         type: 'POST',
-        //         contentType: 'application/json; charset=utf-8',
-        //         dataType: 'json',
-        //         url: '/stock_data/d3',
-        //         data: JSON.stringify({ stock_symbol: stock_symbol }),
-        //         success: function (data) {
-        //             console.log(data);
-        //             //load results for d1 in the correct spot
-        //         }
-        //     });
-        // $.ajax({
-        //         type: 'POST',
-        //         contentType: 'application/json; charset=utf-8',
-        //         dataType: 'json',
-        //         url: '/stock_data/d4',
-        //         data: JSON.stringify({ stock_symbol: stock_symbol }),
-        //         success: function (data) {
-        //             console.log(data);
-        //             //load results for d1 in the correct spot
-        //         }
-        //     });
-        // $.ajax({
-        //         type: 'POST',
-        //         contentType: 'application/json; charset=utf-8',
-        //         dataType: 'json',
-        //         url: '/stock_data/d5',
-        //         data: JSON.stringify({ stock_symbol: stock_symbol }),
-        //         success: function (data) {
-        //             console.log(data);
-        //             //load results for d1 in the correct spot
-        //         }
-        //     });
-
+        });
+        $.getJSON("/stock_data/d2", function(result){
+            $.each(result, function(i, field){
+                $("#stockData2").append(field + " ");
+            });
+        });
+        $.getJSON("/stock_data/d3", function(result){
+            $.each(result, function(i, field){
+                $("#stockData3").append(field + " ");
+            });
+        });
+        $.getJSON("/stock_data/d4", function(result){
+            $.each(result, function(i, field){
+                $("#stockData4").append(field + " ");
+            });
+        });
+        $.getJSON("/stock_data/d5", function(result){
+            $.each(result, function(i, field){
+                $("#stockData5").append(field + " ");
+            });
+        });
     });
     });
 </script>

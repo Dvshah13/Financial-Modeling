@@ -130,42 +130,44 @@ def stockData(symbol):
     # In[164]:
 
     predicted = clf.predict(test_features)
-    Accuracy = accuracy_score(test_labels, predicted)
-    Precision = recall_score(test_labels, predicted)
-    Recall = precision_score(test_labels, predicted)
-    print "Accuracy: ", Accuracy
-    print "Precision: ", Precision
-    print "Recall: ", Recall
+    accuracy = accuracy_score(test_labels, predicted)
+    precision = recall_score(test_labels, predicted)
+    recall = precision_score(test_labels, predicted)
+    print "Accuracy: ", accuracy
+    print "Precision: ", precision
+    print "Recall: ", recall
+    data_algo_weekly = { 'accuracy': accuracy, 'precision': precision, 'recall': recall }
+    return data_algo_weekly
 
 
 # In[165]:
 
-    bought_price = list()
-    current_holdings = 0
-    sell_price = list()
-    for i in range(len(predicted)):
-        if predicted[i]:
-            current_holdings += 1
-            bought_price.append(data[200+(i+1), 0])
-        else:
-            for j in range(current_holdings):
-                sell_price.append(data[200+(i+1), 0])
-            current_holdings = 0
-    print sum(sell_price) - sum(bought_price)
-
-
-    # In[166]:
-
-    step = numpy.arange(0, len(test_labels))
-    plt.subplot(211)
-    plt.xlim(-1, len(test_labels) + 1)
-    plt.ylim(-1, 2)
-    plt.ylabel('Actual Values')
-    plt.plot(step, test_labels, drawstyle = 'step')
-    plt.subplot(212)
-    plt.xlim(-1, len(test_labels) + 1)
-    plt.ylim(-1, 2)
-    plt.xlabel('Weeks')
-    plt.ylabel('Predicted Values')
-    plt.plot(step, predicted, drawstyle = 'step')
-    plt.show()
+    # bought_price = list()
+    # current_holdings = 0
+    # sell_price = list()
+    # for i in range(len(predicted)):
+    #     if predicted[i]:
+    #         current_holdings += 1
+    #         bought_price.append(data[200+(i+1), 0])
+    #     else:
+    #         for j in range(current_holdings):
+    #             sell_price.append(data[200+(i+1), 0])
+    #         current_holdings = 0
+    # print sum(sell_price) - sum(bought_price)
+    #
+    #
+    # # In[166]:
+    #
+    # step = numpy.arange(0, len(test_labels))
+    # plt.subplot(211)
+    # plt.xlim(-1, len(test_labels) + 1)
+    # plt.ylim(-1, 2)
+    # plt.ylabel('Actual Values')
+    # plt.plot(step, test_labels, drawstyle = 'step')
+    # plt.subplot(212)
+    # plt.xlim(-1, len(test_labels) + 1)
+    # plt.ylim(-1, 2)
+    # plt.xlabel('Weeks')
+    # plt.ylabel('Predicted Values')
+    # plt.plot(step, predicted, drawstyle = 'step')
+    # plt.show()

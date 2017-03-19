@@ -131,14 +131,11 @@ def stock_data(symbol):
     accuracy = accuracy_score(test_labels, predicted)
     precision = recall_score(test_labels, predicted)
     recall = precision_score(test_labels, predicted)
-    print "Predicted: ", predicted
-    print "Actual: ", test_labels
     print "Accuracy: ", accuracy
     print "Precision: ", precision
     print "Recall: ", recall
-# data_algo_daily = {'predicted': predicted, 'test_labels': test_labels, 'accuracy': accuracy, 'precision': precision, 'recall': recall }
-# return data_algo_daily
-stock_data(symbol)
+    data_algo_daily = { 'accuracy': accuracy, 'precision': precision, 'recall': recall }
+    return data_algo_daily
 # In[ ]:
 
 # step = numpy.arange(0, len(test_labels))
