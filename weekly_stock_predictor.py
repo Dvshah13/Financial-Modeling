@@ -130,15 +130,50 @@ def stockData(symbol):
     # In[164]:
 
     predicted = clf.predict(test_features)
-    accuracy = accuracy_score(test_labels, predicted)
-    precision = recall_score(test_labels, predicted)
-    recall = precision_score(test_labels, predicted)
-    print "Accuracy: ", accuracy
-    print "Precision: ", precision
-    print "Recall: ", recall
-    data_algo_weekly = { 'accuracy': accuracy, 'precision': precision, 'recall': recall }
-    return data_algo_weekly
+    accuracy_svm = accuracy_score(test_labels, predicted)
+    precision_svm = recall_score(test_labels, predicted)
+    recall_svm = precision_score(test_labels, predicted)
+    print "Accuracy: ", accuracy_svm
+    print "Precision: ", precision_svm
+    print "Recall: ", recall_svm
 
+
+    net = buildNetwork(12, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
+    ds = ClassificationDataSet(12, 1)
+    for i, j in zip(train_features, train_labels):
+        ds.addSample(i, j)
+
+
+    # In[168]:
+
+    trainer = BackpropTrainer(net, ds)
+
+
+    # In[169]:
+
+    epochs = 100
+    for i in range(epochs):
+        trainer.train()
+
+
+    # In[170]:
+
+    predicted = list()
+    for i in test_features:
+        #print net.activate(i)
+        predicted.append(int(net.activate(i)>0.5))
+    predicted = numpy.array(predicted)
+
+
+    # In[171]:
+    accuracy_rnn = accuracy_score(test_labels, predicted)
+    recall_rnn = recall_score(test_labels, predicted)
+    precision_rnn = precision_score(test_labels, predicted)
+    print accuracy_score(test_labels, predicted)
+    print recall_score(test_labels, predicted)
+    print precision_score(test_labels, predicted)
+    data_algo_weekly = { 'accuracy_svm': accuracy_svm, 'precision_svm': precision_svm, 'recall_svm': recall_svm, 'accuracy_rnn': accuracy_rnn, 'recall_rnn': recall_rnn, 'precision_rnn': precision_rnn }
+    return data_algo_weekly
 
 # In[165]:
 

@@ -84,7 +84,13 @@ body {
   <h2>Market Snapshot</h2>
   <p>Click on the left menu to access your portfolio</p>
   <div id="content">
-  <div id='stockData1' class="hidden"><p> Basic Data </p></div>
+  <div id='stockData1' class="hidden"><p> Basic Data </p><table>
+      <thead>
+        <tr><td>Header 1</td></tr>
+        <tr><td>Header 2</td></tr>
+        <tr><td>Header 3</td></tr>
+    </thead>
+  </table></div>
   <div id='stockData2' class="hidden"> <p> Twitter Sentiment </p></div>
   <div id='stockData3' class="hidden"><p> Daily Algo Analysis </p></div>
   <div id='stockData4' class="hidden"><p> Weekly Algo Analysis </p></div>
@@ -132,27 +138,27 @@ $('#my-dropdown li').click(function () {
             });
         $.getJSON("/stock_data/d1", function(result){
             $.each(result, function(i, field){
-                $("#stockData1").empty().append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData1").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d2", function(result){
             $.each(result, function(i, field){
-                $("#stockData2").empty().append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData2").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d3", function(result){
             $.each(result, function(i, field){
-                $("#stockData3").empty().append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData3").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d4", function(result){
             $.each(result, function(i, field){
-                $("#stockData4").empty().append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData4").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
         $.getJSON("/stock_data/d5", function(result){
             $.each(result, function(i, field){
-                $("#stockData5").empty().append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData5").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
     });
