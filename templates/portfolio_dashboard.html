@@ -52,6 +52,7 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
 </style>
 </head>
 <body>
@@ -138,26 +139,32 @@ $('#my-dropdown li').click(function () {
                     console.log(data);
                 }
             });
+            // basic stock data
         $.getJSON("/stock_data/d1", function(result){
             $.each(result, function(i, field){
                 $("#stockData1").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
+    // basic twitter sentiment data
         $.getJSON("/stock_data/d2", function(result){
             $.each(result, function(i, field){
                 $("#stockData2").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
+            // daily svm and rnn analysis
         $.getJSON("/stock_data/d3", function(result){
             $.each(result, function(i, field){
                 $("#stockData3").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
+            // weekly svm and rnn analysis
         $.getJSON("/stock_data/d4", function(result){
             $.each(result, function(i, field){
                 $("#stockData4").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
             });
         });
+
+            // monthly svm and rnn analysis
         $.getJSON("/stock_data/d5", function(result){
             $.each(result, function(i, field){
                 $("#stockData5").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
