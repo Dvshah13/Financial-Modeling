@@ -61,7 +61,7 @@ body {
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3 class=navbar_name style="color: white">Hello Deepak!</h3>
+  <h3 class=navbar_name style="color: white">Hello {{ first_name }}!</h3>
   <a href="#" onclick="myAccFunc()">
   Your Portfolio <i class="fa fa-caret-down"></i>
   </button>
@@ -86,13 +86,11 @@ body {
   <div id="content">
   <div id='stockData1' class="hidden"><p> Basic Data </p>
       <table>
-      <thead>
         <tr>
         <th>Header 1</th>
         <th>Header 2</th>
         <th>Header 3</th>
         </tr>
-    </thead>
   </table>
 </div>
   <div id='stockData2' class="hidden"> <p> Twitter Sentiment </p></div>
