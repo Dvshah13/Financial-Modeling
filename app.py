@@ -33,7 +33,7 @@ class User(Document):
 
 @app.route('/')
 def index():
-    return render_template('landing_page.html')
+    return render_template('index.html')
 
 @app.route('/login_page')
 def login_page():
