@@ -213,7 +213,7 @@ a:focus {
   }
 }
 .hero-area {
-  background: url(../img/wp2.jpg) no-repeat;
+  background: url(../img/wp4.jpg) no-repeat;
   background-size: cover;
   background-position: center bottom;
   color: #fff;
@@ -224,7 +224,7 @@ a:focus {
   background: transparent;
 }
 .hero-area .contents h1 {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 200;
 }
 .hero-area .contents p {
