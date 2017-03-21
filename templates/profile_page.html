@@ -24,7 +24,7 @@
     <div class="col-xs-4"> </div>
     <div class="container-fluid signup-form-content-row">
         <div class="content-row signup-form-content">
-            <form class="signup-form col-xs-4" method="POST" action="/profile_submit">
+            <form class="signup-form col-xs-4" method="POST" action="/submit_profile">
                 <label>First Name</label>
                 <div class="form-group first-name">
                     <input type="text" id="first-name" value={{ first_name }} name="fname" placeholder="First Name" minlength="2" required>
@@ -39,7 +39,7 @@
                 </div>
                 <label>Password</label>
                 <div class="form-group password">
-                    <input type="password" id="password" value={{ password }} name="password" placeholder="Password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required><br />
+                    <input type="password" id="password" name="password" placeholder="Password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required><br />
                     <label><h5>(minimum 6 characters; must use at least one uppercase letter and at least one number)</h5></label>
                 </div>
                 <label>Confirm Password</label>
@@ -56,7 +56,7 @@
                     </script>
                 </div>
                 <br />
-                <button type="submit" class="btn btn-primary">Create Account</button>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
             </form>
         </div>
     </div>
