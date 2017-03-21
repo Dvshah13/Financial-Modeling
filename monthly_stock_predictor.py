@@ -33,24 +33,24 @@ def multiple_days_forward(data, days):
 # print "7. MSFT"
 # case = int(input())
 
-
+### Heroku Routes ###
 # In[156]:
 def stockData(symbol):
     data = list()
     if symbol == 'SPY':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/spy.csv'
+        url = '/app/monthly_historical_prices/spy.csv'
     elif symbol == 'AAPL':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/aapl.csv'
+        url = '/app/monthly_historical_prices/aapl.csv'
     elif symbol == 'GOOG':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/goog.csv'
+        url = '/app/monthly_historical_prices/goog.csv'
     elif symbol == 'FB':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/fb.csv'
+        url = '/app/monthly_historical_prices/fb.csv'
     elif symbol == 'AMZN':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'
+        url = '/app/monthly_historical_prices/amzn.csv'
     elif symbol == 'DIS':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'
+        url = '/app/monthly_historical_prices/dis.csv'
     elif symbol == 'MSFT':
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'
+        url = '/app/monthly_historical_prices/msft.csv'
 
     with open(url, 'r') as f:
         reader = csv.reader(f)
