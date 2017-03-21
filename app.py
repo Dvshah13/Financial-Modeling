@@ -68,7 +68,7 @@ def login():
     else:
         return "Wrong Password, click back to try again."
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def update_page():
     update_user = User.objects.get(email = session.get('email'))
     session['email'] = update_user.email
