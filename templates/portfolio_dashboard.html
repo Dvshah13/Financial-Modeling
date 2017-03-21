@@ -9,6 +9,11 @@ body {
     transition: background-color .5s;
 }
 
+.table_header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -23,7 +28,6 @@ body {
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -85,19 +89,11 @@ body {
   <h2>Market Snapshot</h2>
   <p>Click on the left menu to access your portfolio</p>
   <div id="content">
-  <div id='stockData1' class="hidden"><p> Basic Data </p>
-      <table>
-        <tr>
-        <th>Header 1</th>
-        <th>Header 2</th>
-        <th>Header 3</th>
-        </tr>
-  </table>
-</div>
-  <div id='stockData2' class="hidden"> <p> Twitter Sentiment </p></div>
-  <div id='stockData3' class="hidden"><p> Daily Algo Analysis </p></div>
-  <div id='stockData4' class="hidden"><p> Weekly Algo Analysis </p></div>
-  <div id='stockData5' class="hidden"><p> Monthly Algo Analysis </p></div>
+  <div id='stockData1' class="hidden"><p class="table_header"> Basic Data </p></div>
+  <div id='stockData2' class="hidden"><p class="table_header"> Twitter Sentiment </p></div>
+  <div id='stockData3' class="hidden"><p class="table_header"> Daily Algo Analysis </p></div>
+  <div id='stockData4' class="hidden"><p class="table_header"> Weekly Algo Analysis </p></div>
+  <div id='stockData5' class="hidden"><p class="table_header"> Monthly Algo Analysis </p></div>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -142,32 +138,32 @@ $('#my-dropdown li').click(function () {
             // basic stock data
         $.getJSON("/stock_data/d1", function(result){
             $.each(result, function(i, field){
-                $("#stockData1").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData1").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
     // basic twitter sentiment data
         $.getJSON("/stock_data/d2", function(result){
             $.each(result, function(i, field){
-                $("#stockData2").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData2").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
             // daily svm and rnn analysis
         $.getJSON("/stock_data/d3", function(result){
             $.each(result, function(i, field){
-                $("#stockData3").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData3").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
             // weekly svm and rnn analysis
         $.getJSON("/stock_data/d4", function(result){
             $.each(result, function(i, field){
-                $("#stockData4").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData4").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
 
             // monthly svm and rnn analysis
         $.getJSON("/stock_data/d5", function(result){
             $.each(result, function(i, field){
-                $("#stockData5").append('<tr class="child"><td>'+ field + '</td></tr>').removeClass("hidden");
+                $("#stockData5").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
     });
