@@ -136,7 +136,7 @@ def stockData(symbol):
     print "Accuracy: ", accuracy
     print "Precision: ", precision
     print "Recall: ", recall
-    data_algo_monthly = { 'accuracy': accuracy, 'precision': precision, 'recall': recall }
+    data_algo_monthly = { 'SVM Accuracy': accuracy, 'SVM Precision': precision, 'SVM Recall': recall }
     return data_algo_monthly
 
 

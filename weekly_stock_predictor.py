@@ -172,7 +172,7 @@ def stockData(symbol):
     print accuracy_score(test_labels, predicted)
     print recall_score(test_labels, predicted)
     print precision_score(test_labels, predicted)
-    data_algo_weekly = { 'accuracy_svm': accuracy_svm, 'precision_svm': precision_svm, 'recall_svm': recall_svm, 'accuracy_rnn': accuracy_rnn, 'recall_rnn': recall_rnn, 'precision_rnn': precision_rnn }
+    data_algo_weekly = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn }
     return data_algo_weekly
 
 # In[165]:

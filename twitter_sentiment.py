@@ -47,5 +47,5 @@ def findStock(symbol):
 
         print pos_count
         print neg_count
-        twitter_sentiment_pos_neg = { 'pos_count': pos_count, 'neg_count': neg_count, 'tweets': tweet.text }
+        twitter_sentiment_pos_neg = { '# of Positive Tweets': pos_count, '# of Negative Tweets': neg_count, 'Public Tweets': tweet.text }
         return twitter_sentiment_pos_neg

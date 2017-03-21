@@ -52,7 +52,7 @@ def data_front_page(symbol):
     pe_ratio = Share(symbol).get_price_earnings_ratio()
     peg_ratio = Share(symbol).get_price_earnings_growth_ratio()
     short_ratio = Share(symbol).get_short_ratio()
-    data_set1 = {'current_price':current_price, 'per_change':per_change, 'curr_volume':curr_volume, 'ebitda':ebitda, 'curr_50day':curr_50day, 'curr_perchan_50':curr_perchan_50, 'pe_ratio':pe_ratio, 'peg_ratio':peg_ratio, 'short_ratio':short_ratio}
+    data_set1 = {'Current Price':current_price, 'Daily Percent Change':per_change, 'Daily Volume':curr_volume, 'EBITDA':ebitda, 'Current 50 Day SMA':curr_50day, 'Percent Change from 50 Day SMA':curr_perchan_50, 'PE Ratio':pe_ratio, 'PEG Ratio':peg_ratio, 'Shares Short Ratio':short_ratio}
     return data_set1
 
 # Add a new user
