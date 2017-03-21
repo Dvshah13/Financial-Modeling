@@ -44,6 +44,7 @@ def login_page():
 def register_page():
     return render_template('register.html')
 
+
 @app.route('/submit', methods=['GET', 'POST'])
 def register():
     new_user = User (
@@ -66,6 +67,29 @@ def login():
         return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
     else:
         return "Wrong Password, click back to try again."
+
+@app.route('/profile')
+def update_page():
+    update_user = User.objects.get(email = session.get('email'))
+    session['email'] = update_user.email
+    session['first_name'] = update_user.first_name
+    session['last_name'] = update_user.last_name
+    session['password'] = update_user.password
+    return render_template('profile_page.html', email = session.get('email'), first_name = session.get('first_name'), last_name = session.get('last_name'), password = session.get('password'))
+
+@app.route('/submit_profile', methods=['GET', 'POST'])
+def register():
+    update_user = User (
+            first_name = request.form['fname'],
+            last_name = request.form['lname'],
+            email = request.form['email'],
+            password = bcrypt.generate_password_hash(request.form['password'])
+            )
+    session['email'] = update_user.email
+    session['first_name'] = update_user.first_name
+    print new_user
+    update_user.save()
+    return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
 
 @app.route('/stock_data', methods=['POST'])
 def stockInfo():

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DMR Capital</title>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- App stylesheet -->
+  </head>
+  <body>
+<div class="container-fluid" id="account-signup-container">
+    <div class="row signup-form-header-row">
+        <div class="col-xs-12 header-row signup-form-header typewriter-sm">
+            <h2>Registration</h2>
+        </div>
+    </div>
+     <div class="row messages">
+        <div class="col-xs-8">
+            <ul id="messages-list" style="list-style-type: none;">
+                <li id="message"></li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="col-xs-4"> </div>
+    <div class="container-fluid signup-form-content-row">
+        <div class="content-row signup-form-content">
+            <form class="signup-form col-xs-4" method="POST" action="/submit">
+                <label>First Name</label>
+                <div class="form-group first-name">
+                    <input type="text" id="first-name" value={{ first_name }} name="fname" placeholder="First Name" minlength="2" required>
+                </div>
+                <label>Last Name</label>
+                <div class="form-group last-name">
+                    <input type="text" id="last-name" value={{ last_name }} name="lname" placeholder="Last Name" minlength="2" required>
+                </div>
+                <label>Email Address</label>
+                <div class="form-group email">
+                    <input type="email"  id="email" value={{ email }} name="email" placeholder="Email" minlength="5" required>
+                </div>
+                <label>Password</label>
+                <div class="form-group password">
+                    <input type="password" id="password" value={{ password }} name="password" placeholder="Password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required><br />
+                    <label><h5>(minimum 6 characters; must use at least one uppercase letter and at least one number)</h5></label>
+                </div>
+                <label>Confirm Password</label>
+                <div class="form-group password-confirm">
+                    <input type="password" name="password-confirm" placeholder="Confirm Password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" oninput="check(this)" required>
+                    <script language='javascript' type='text/javascript'>
+                        function check(input) {
+                            if (input.value != document.getElementById('password').value) {
+                                input.setCustomValidity('Passwords must match');
+                            } else {
+                                input.setCustomValidity('');
+                            }
+                        }
+                    </script>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
+    </div>
+    <br />
+</div>
+</div>
+<!-- Minified JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Minified Marked for realtime markdown conversion -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+<!-- Latest compiled and minified Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Load layout JS -->
+</body>
+</html>
