@@ -38,10 +38,8 @@ def findStock(symbol):
     tweets_pos = []
     tweets_neg = []
     for tweet in public_tweets:
-        print(tweet.text)
         #Step 4 Perform Sentiment Analysis on Tweets
         analysis = TextBlob(tweet.text)
-        print(analysis.sentiment)
         if (analysis.polarity > 0 and analysis.subjectivity > 0.25):
             pos_count += 1
             tweets_pos.append(tweet.text)
@@ -49,8 +47,6 @@ def findStock(symbol):
             neg_count += 1
             tweets_neg.append(tweet.text)
 
-        print pos_count
-        print neg_count
 
     twitter_sentiment_pos_neg = { '# of Positive Tweets': pos_count, '# of Negative Tweets': neg_count, 'Positive Tweets': tweets_pos, 'Negative Tweets': tweets_neg }
     return twitter_sentiment_pos_neg
