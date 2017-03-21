@@ -9,9 +9,22 @@ body {
     transition: background-color .5s;
 }
 
+.data_table td {
+    border: 1px solid black;
+    padding: 4px;
+}
+
 .table_header {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: -3px;
+    margin-top: 10px;
+}
+
+.table_header_top {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -3px;
 }
 
 .sidenav {
@@ -86,21 +99,22 @@ body {
 </div>
 
 <div id="main">
-  <h2>Market Snapshot</h2>
-  <p>Click on the left menu to access your portfolio</p>
+  <h2 id="welcome_header">Welcome to DMR Capital's Market Snapshot and Analysis</h2>
+  <p id="menu_instructions">Click on the left menu to access your portfolio</p>
+  <div id ="stockNameHeader">
+  </div>
   <div id="content">
-  <div id='stockData1' class="hidden"><p class="table_header"> Basic Data </p>
-      <table style="border: 1px solid black;">
-          
-      </table>
+  <div id='stockData1' class="hidden"><p class="table_header_top"> Basic Data </p>
   </div>
-  <div id='stockData2' class="hidden"><p class="table_header"> Twitter Sentiment </p>
+  <div id='stockData2' class="hidden"><p class="table_header"> Key Indicator Data </p>
   </div>
-  <div id='stockData3' class="hidden"><p class="table_header"> Daily Algo Analysis </p>
+  <div id='stockData3' class="hidden"><p class="table_header"> Twitter Sentiment Analysis </p>
   </div>
-  <div id='stockData4' class="hidden"><p class="table_header"> Weekly Algo Analysis </p>
+  <div id='stockData4' class="hidden"><p class="table_header"> Daily Algo Analysis </p>
   </div>
-  <div id='stockData5' class="hidden"><p class="table_header"> Monthly Algo Analysis </p>
+  <div id='stockData5' class="hidden"><p class="table_header"> Weekly Algo Analysis </p>
+  </div>
+  <div id='stockData6' class="hidden"><p class="table_header"> Monthly Algo Analysis </p>
   </div>
   </div>
 </div>
@@ -136,42 +150,50 @@ $('#my-dropdown li').click(function () {
         $.ajax({
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
+                // dataType: 'json',
                 url: '/stock_data',
                 data: JSON.stringify({ stock_symbol: stock_symbol }),
                 success: function (data) {
-                    console.log(data);
+                    $("#stockNameHeader").append("<h2>" + "DMR Capital's Data and Analysis for: " + stock_symbol + "</h2>");
+                    $("#menu_instructions").hide();
+                    $("#welcome_header").hide();
                 }
             });
             // basic stock data
         $.getJSON("/stock_data/d1", function(result){
             $.each(result, function(i, field){
-                $("#stockData1").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+                $("#stockData1").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+            });
+        });
+        // stock RSI values
+        $.getJSON("/stock_data/d2", function(result){
+            $.each(result, function(i, field){
+                $("#stockData2").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
     // basic twitter sentiment data
-        $.getJSON("/stock_data/d2", function(result){
+        $.getJSON("/stock_data/d3", function(result){
             $.each(result, function(i, field){
-                $("#stockData2").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+                $("#stockData3").append('<div>' + i + " : " + field + '</div>').removeClass("hidden");
             });
         });
             // daily svm and rnn analysis
-        $.getJSON("/stock_data/d3", function(result){
+        $.getJSON("/stock_data/d4", function(result){
             $.each(result, function(i, field){
-                $("#stockData3").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+                $("#stockData4").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
             // weekly svm and rnn analysis
-        $.getJSON("/stock_data/d4", function(result){
+        $.getJSON("/stock_data/d5", function(result){
             $.each(result, function(i, field){
-                $("#stockData4").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+                $("#stockData5").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
 
             // monthly svm and rnn analysis
-        $.getJSON("/stock_data/d5", function(result){
+        $.getJSON("/stock_data/d6", function(result){
             $.each(result, function(i, field){
-                $("#stockData5").append('<tr><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
+                $("#stockData6").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
     });

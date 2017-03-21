@@ -52,7 +52,13 @@ def data_front_page(symbol):
     pe_ratio = Share(symbol).get_price_earnings_ratio()
     peg_ratio = Share(symbol).get_price_earnings_growth_ratio()
     short_ratio = Share(symbol).get_short_ratio()
-    data_set1 = {'Current Price':current_price, 'Daily Percent Change':per_change, 'Daily Volume':curr_volume, 'EBITDA':ebitda, 'Current 50 Day SMA':curr_50day, 'Percent Change from 50 Day SMA':curr_perchan_50, 'PE Ratio':pe_ratio, 'PEG Ratio':peg_ratio, 'Shares Short Ratio':short_ratio}
+    earnings_estimate_next_quarter = Share(symbol).get_EPS_estimate_next_quarter()
+    earnings_estimate_next_year = Share(symbol).get_price_EPS_estimate_next_year()
+    year_range = Share(symbol).get_year_range()
+    per_chan_high = Share(symbol).get_percent_change_from_year_high()
+    per_chan_low = Share(symbol).get_percent_change_from_year_low()
+    one_year_price_target = Share(symbol).get_one_yr_target_price()
+    data_set1 = {'Current Price':current_price, 'Daily Percent Change':per_change, 'Daily Volume':curr_volume, 'EBITDA':ebitda, 'Current 50 Day SMA':curr_50day, '% Change from 50 Day SMA':curr_perchan_50, 'PE Ratio':pe_ratio, 'PEG Ratio':peg_ratio, 'Shares Short Ratio':short_ratio, 'Earnings Est Next Quarter': earnings_estimate_next_quarter, 'Earnings Est Next Year': earnings_estimate_next_year, 'Year Range': year_range, 'Year Range % Change From High': per_chan_high, 'Year Range % Change From Low': per_chan_low, 'One Year Price Target': one_year_price_target }
     return data_set1
 
 # Add a new user

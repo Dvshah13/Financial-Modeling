@@ -85,6 +85,16 @@ def get_data_scripts():
     return jsonify(ret)
 
 @app.route('/stock_data/d2', methods=['GET'])
+def get_rsi_scripts():
+    symbol = session.get('stock')
+    print symbol
+    import rsi_data
+    ret = rsi_data.read_stock_rsi(symbol)
+    print ret
+    #return in json format
+    return jsonify(ret)
+
+@app.route('/stock_data/d3', methods=['GET'])
 def get_twitter_scripts():
    symbol = session.get('stock')
    import twitter_sentiment
@@ -93,7 +103,7 @@ def get_twitter_scripts():
    #return in json format
    return jsonify(ret)
 #
-@app.route('/stock_data/d3', methods=['GET'])
+@app.route('/stock_data/d4', methods=['GET'])
 def get_daily_algo_scripts():
    symbol = session.get('stock')
    import daily_stock_prediction
@@ -102,7 +112,7 @@ def get_daily_algo_scripts():
    #return in json format
    return jsonify(ret)
 
-@app.route('/stock_data/d4', methods=['GET'])
+@app.route('/stock_data/d5', methods=['GET'])
 def get_weekly_algo_scripts():
    symbol = session.get('stock')
    import weekly_stock_predictor
@@ -111,7 +121,7 @@ def get_weekly_algo_scripts():
    #return in json format
    return jsonify(ret)
 #
-@app.route('/stock_data/d5', methods=['GET'])
+@app.route('/stock_data/d6', methods=['GET'])
 def get_monthly_algo_scripts():
    symbol = session.get('stock')
    import monthly_stock_predictor
