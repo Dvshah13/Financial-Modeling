@@ -1,20 +1,19 @@
 # DMR Capital
 Financial Data Modeling using Machine Learning
 
-<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>markWith</a><br><br>
+<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br><br>
 <b>Contributors:</b> <br>
-Mark Greenburg, Nedra Mevoli, and Deepak Shah 
+Deepak Shah 
 <br><br>
 <b>Technologies, Frameworks and Programming Languages:</b><br>
-SocketIO, MongoDb, Express, Node JS, Javascript, jQuery, HTML, Sass CSS, Heroku
+Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript, jQuery, HTML, Sass CSS, Heroku
 <br><br><b>Overview of Project:</b><br>
-markWith started as a concept to build a collaborative markdown editor.  markWith allows users to create and invite collaborators to edit Markdown in real-time.
+DMR Capital was built to allow users to utilize machine learning systems, sentiment analysis and basic stock data and indicators to make informed trading decisions to generate above average market return. 
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
 <b>Features:</b>
-<li>Simultaneously edit text file with others (on / route)</li>
-<li>See Markdown rendered from your text files in real-time</li>
-<li>Changes propagated to all other clients in real-time</li>
-<li>Changes saved to an in-app memory so it's fast</li>
+<li>Utilize Support Vector Machine (SVM) and Recurrent Neural Net (RNN) predicitive analysis to forecast future moves.</li>
+<li>Delivers sentiment analysis through twitter and sorted by positive and negative sentiment and filtered by polarity and subjectivity.</li>
+<li>On your dashboard have access to all the pertinant information you need to make informed and profitable decisions.</li>
 <br>
 
 ***
