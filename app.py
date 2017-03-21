@@ -28,7 +28,7 @@ connect(
 class User(Document):
     first_name = StringField(max_length=50)
     last_name = StringField(max_length=50)
-    email = StringField(max_length=50)
+    email = StringField(max_length=50, unique=True)
     password = StringField(max_length=200)
     cdate = DateTimeField(default=datetime.datetime.now)
 
@@ -88,7 +88,7 @@ def update():
     session['email'] = update_user.email
     session['first_name'] = update_user.first_name
     print new_user
-    update_user.update()
+    update_user.save()
     return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
 
 @app.route('/stock_data', methods=['POST'])
