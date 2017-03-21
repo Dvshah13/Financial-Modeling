@@ -78,7 +78,6 @@ def stockInfo():
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
     symbol = request.args['stock_symbol']
-    print symbol
     import basic_stock_data
     ret = basic_stock_data.data_front_page(symbol)
     #return in json format
