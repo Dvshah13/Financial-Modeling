@@ -216,7 +216,6 @@ $('#my-dropdown li').click(function () {
         $.getJSON("/stock_data/d2",
         { stock_symbol: stock_symbol },
         function(result){
-            data: JSON.stringify({ stock_symbol: stock_symbol }),
             $("#stockData2").empty();
             $("#stockData2").append('<p class="table_header_float"> Key Indicator Data </p>');
             $.each(result, function(i, field){
