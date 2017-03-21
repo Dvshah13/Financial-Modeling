@@ -2,7 +2,7 @@
 Financial Data Modeling using Machine Learning
 
 <b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br><br>
-<b>Contributors:</b> <br>
+<b>Programmer and Designer:</b> <br>
 Deepak Shah 
 <br><br>
 <b>Technologies, Frameworks and Programming Languages:</b><br>
