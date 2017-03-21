@@ -11,17 +11,18 @@ app.secret_key = 'whoathere'
 bcrypt = Bcrypt(app)
 
 # MongoDB Database connection Locally
-connect('financial_modeling', host='localhost', port=27017)
+# connect('financial_modeling', host='localhost', port=27017)
 
 # MongoDB Remote hosting
-# app.config["MONGODB_DB"] = 'deepak_db'
-# connect(
-#     'deepak_db',
-#     username='dvshah13',
-#     password='rockets13',
-#     host='mongodb://<dvshah13>:<rockets13>@ds161099.mlab.com:61099/deepak_db',
-#     port=61099
-# )
+app.config["MONGODB_DB"] = 'deepak_db'
+connect(
+    'deepak_db',
+    username='dvshah13',
+    password='rockets13',
+    host='mongodb://dvshah13:rockets13@ds161099.mlab.com:61099/deepak_db',
+    port=61099
+)
+
 
 # Different Mongo collections/tables
 class User(Document):
@@ -80,7 +81,6 @@ def get_data_scripts():
     print symbol
     import basic_stock_data
     ret = basic_stock_data.data_front_page(symbol)
-    print ret
     #return in json format
     return jsonify(ret)
 
@@ -90,16 +90,15 @@ def get_rsi_scripts():
     print symbol
     import rsi_data
     ret = rsi_data.read_stock_rsi(symbol)
-    print ret
     #return in json format
     return jsonify(ret)
 
 @app.route('/stock_data/d3', methods=['GET'])
 def get_twitter_scripts():
    symbol = session.get('stock')
+   print symbol
    import twitter_sentiment
    ret = twitter_sentiment.findStock(symbol)
-   print ret
    #return in json format
    return jsonify(ret)
 #
@@ -108,7 +107,7 @@ def get_daily_algo_scripts():
    symbol = session.get('stock')
    import daily_stock_prediction
    ret = daily_stock_prediction.stock_data(symbol)
-   print ret
+   print symbol
    #return in json format
    return jsonify(ret)
 
@@ -117,7 +116,7 @@ def get_weekly_algo_scripts():
    symbol = session.get('stock')
    import weekly_stock_predictor
    ret = weekly_stock_predictor.stockData(symbol)
-   print ret
+   print symbol
    #return in json format
    return jsonify(ret)
 #
@@ -126,7 +125,7 @@ def get_monthly_algo_scripts():
    symbol = session.get('stock')
    import monthly_stock_predictor
    ret = monthly_stock_predictor.stockData(symbol)
-   print ret
+   print symbol
    #return in json format
    return jsonify(ret)
 

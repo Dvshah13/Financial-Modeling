@@ -9,6 +9,16 @@ body {
     transition: background-color .5s;
 }
 
+#button_logout {
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.hamburger_menu {
+    margin-left: 15px;
+}
+
 .data_table td {
     border: 1px solid black;
     padding: 4px;
@@ -25,6 +35,36 @@ body {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: -3px;
+}
+
+.table_header_float {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -3px;
+}
+
+#stockData1 {
+    float: left;
+}
+
+#stockData2 {
+    margin-left: 15px;
+    float: left;
+}
+
+#stockData3 {
+    float: left;
+}
+#stockData4 {
+    float: left;
+}
+#stockData5 {
+    float: left;
+    margin-left: 20px;
+}
+#stockData6 {
+    float: left;
+    margin-left: 20px;
 }
 
 .sidenav {
@@ -74,8 +114,10 @@ body {
 </head>
 <body>
 <div id="header">
-    <span style="font-size:35px;cursor:pointer" onclick="openNav()">&#9776; </span>
-    <a href="/logout">Logout</a>
+    <span class="hamburger_menu" style="font-size:35px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        <a href="/logout" id="button_logout" class="btn btn-info btn-sm pull-right">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -106,15 +148,16 @@ body {
   <div id="content">
   <div id='stockData1' class="hidden"><p class="table_header_top"> Basic Data </p>
   </div>
-  <div id='stockData2' class="hidden"><p class="table_header"> Key Indicator Data </p>
+  <div id='stockData2' class="hidden"><p class="table_header_float"> Key Indicator Data </p>
   </div>
   <div id='stockData3' class="hidden"><p class="table_header"> Twitter Sentiment Analysis </p>
   </div>
-  <div id='stockData4' class="hidden"><p class="table_header"> Daily Algo Analysis </p>
+  <div style="clear:both;"></div>
+  <div id='stockData4' class="hidden"><p class="table_header"> Daily ML Algo Analysis </p>
   </div>
-  <div id='stockData5' class="hidden"><p class="table_header"> Weekly Algo Analysis </p>
+  <div id='stockData5' class="hidden"><p class="table_header"> Weekly ML Algo Analysis </p>
   </div>
-  <div id='stockData6' class="hidden"><p class="table_header"> Monthly Algo Analysis </p>
+  <div id='stockData6' class="hidden"><p class="table_header"> Monthly ML Algo Analysis </p>
   </div>
   </div>
 </div>
@@ -154,37 +197,47 @@ $('#my-dropdown li').click(function () {
                 url: '/stock_data',
                 data: JSON.stringify({ stock_symbol: stock_symbol }),
                 success: function (data) {
-                    $("#stockNameHeader").append("<h2>" + "DMR Capital's Data and Analysis for: " + stock_symbol + "</h2>");
+                    $("#stockNameHeader").html("<h2>" + "DMR Capital's Data and Analysis for: " + stock_symbol + "</h2>");
                     $("#menu_instructions").hide();
                     $("#welcome_header").hide();
                 }
             });
             // basic stock data
         $.getJSON("/stock_data/d1", function(result){
+            $("#stockData1").empty();
+            $("#stockData1").append('<p class="table_header_top"> Basic Data </p>')
             $.each(result, function(i, field){
                 $("#stockData1").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
         // stock RSI values
         $.getJSON("/stock_data/d2", function(result){
+            $("#stockData2").empty();
+            $("#stockData2").append('<p class="table_header_float"> Key Indicator Data </p>');
             $.each(result, function(i, field){
                 $("#stockData2").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
     // basic twitter sentiment data
         $.getJSON("/stock_data/d3", function(result){
+            $("#stockData3").empty();
+            $("#stockData3").append('<p class="table_header"> Twitter Sentiment Analysis </p>');
             $.each(result, function(i, field){
                 $("#stockData3").append('<div>' + i + " : " + field + '</div>').removeClass("hidden");
             });
         });
             // daily svm and rnn analysis
         $.getJSON("/stock_data/d4", function(result){
+            $("#stockData4").empty();
+            $("#stockData4").append('<p class="table_header"> Daily ML Algo Analysis </p>');
             $.each(result, function(i, field){
                 $("#stockData4").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
             // weekly svm and rnn analysis
         $.getJSON("/stock_data/d5", function(result){
+            $("#stockData5").empty();
+            $("#stockData5").append('<p class="table_header"> Weekly ML Algo Analysis </p>');
             $.each(result, function(i, field){
                 $("#stockData5").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
@@ -192,6 +245,8 @@ $('#my-dropdown li').click(function () {
 
             // monthly svm and rnn analysis
         $.getJSON("/stock_data/d6", function(result){
+            $("#stockData6").empty();
+            $("#stockData6").append('<p class="table_header"> Monthly ML Algo Analysis </p>');
             $.each(result, function(i, field){
                 $("#stockData6").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
