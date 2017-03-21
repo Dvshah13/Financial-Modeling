@@ -35,18 +35,22 @@ def findStock(symbol):
     # Find tweets and catorgorize them
     neg_count = 0
     pos_count = 0
+    tweets_pos = []
+    tweets_neg = []
     for tweet in public_tweets:
         print(tweet.text)
         #Step 4 Perform Sentiment Analysis on Tweets
         analysis = TextBlob(tweet.text)
         print(analysis.sentiment)
-        if (analysis.polarity > 0 and analysis.subjectivity > 0.3):
+        if (analysis.polarity > 0 and analysis.subjectivity > 0.25):
             pos_count += 1
-        elif (analysis.polarity < 0 and analysis.subjectivity > 0.3):
+            tweets_pos.append(tweet.text)
+        elif (analysis.polarity < 0 and analysis.subjectivity > 0.25):
             neg_count += 1
+            tweets_neg.append(tweet.text)
 
         print pos_count
         print neg_count
 
-    twitter_sentiment_pos_neg = { '# of Positive Tweets': pos_count, '# of Negative Tweets': neg_count, 'Public Tweets': tweet.text }
+    twitter_sentiment_pos_neg = { '# of Positive Tweets': pos_count, '# of Negative Tweets': neg_count, 'Positive Tweets': tweets_pos, 'Negative Tweets': tweets_neg }
     return twitter_sentiment_pos_neg
