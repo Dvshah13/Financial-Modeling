@@ -203,7 +203,9 @@ $('#my-dropdown li').click(function () {
                 }
             });
             // basic stock data
-        $.getJSON("/stock_data/d1", function(result){
+        $.getJSON("/stock_data/d1",
+        { stock_symbol: stock_symbol },
+        function(result) {
             $("#stockData1").empty();
             $("#stockData1").append('<p class="table_header_top"> Basic Data </p>')
             $.each(result, function(i, field){
@@ -211,7 +213,10 @@ $('#my-dropdown li').click(function () {
             });
         });
         // stock RSI values
-        $.getJSON("/stock_data/d2", function(result){
+        $.getJSON("/stock_data/d2",
+        { stock_symbol: stock_symbol },
+        function(result){
+            data: JSON.stringify({ stock_symbol: stock_symbol }),
             $("#stockData2").empty();
             $("#stockData2").append('<p class="table_header_float"> Key Indicator Data </p>');
             $.each(result, function(i, field){
@@ -219,7 +224,9 @@ $('#my-dropdown li').click(function () {
             });
         });
     // basic twitter sentiment data
-        $.getJSON("/stock_data/d3", function(result){
+        $.getJSON("/stock_data/d3",
+        { stock_symbol: stock_symbol },
+        function(result){
             $("#stockData3").empty();
             $("#stockData3").append('<p class="table_header"> Twitter Sentiment Analysis </p>');
             $.each(result, function(i, field){
@@ -227,7 +234,9 @@ $('#my-dropdown li').click(function () {
             });
         });
             // daily svm and rnn analysis
-        $.getJSON("/stock_data/d4", function(result){
+        $.getJSON("/stock_data/d4",
+        { stock_symbol: stock_symbol },
+        function(result){
             $("#stockData4").empty();
             $("#stockData4").append('<p class="table_header"> Daily ML Algo Analysis </p>');
             $.each(result, function(i, field){
@@ -235,7 +244,9 @@ $('#my-dropdown li').click(function () {
             });
         });
             // weekly svm and rnn analysis
-        $.getJSON("/stock_data/d5", function(result){
+        $.getJSON("/stock_data/d5",
+        { stock_symbol: stock_symbol },
+        function(result){
             $("#stockData5").empty();
             $("#stockData5").append('<p class="table_header"> Weekly ML Algo Analysis </p>');
             $.each(result, function(i, field){
@@ -244,7 +255,9 @@ $('#my-dropdown li').click(function () {
         });
 
             // monthly svm and rnn analysis
-        $.getJSON("/stock_data/d6", function(result){
+        $.getJSON("/stock_data/d6",
+        { stock_symbol: stock_symbol },
+        function(result){
             $("#stockData6").empty();
             $("#stockData6").append('<p class="table_header"> Monthly ML Algo Analysis </p>');
             $.each(result, function(i, field){

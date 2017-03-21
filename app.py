@@ -77,7 +77,7 @@ def stockInfo():
 
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
-    symbol = session.get('stock')
+    symbol = request.args['stock_symbol']
     print symbol
     import basic_stock_data
     ret = basic_stock_data.data_front_page(symbol)
@@ -86,7 +86,7 @@ def get_data_scripts():
 
 @app.route('/stock_data/d2', methods=['GET'])
 def get_rsi_scripts():
-    symbol = session.get('stock')
+    symbol = request.args['stock_symbol']
     print symbol
     import rsi_data
     ret = rsi_data.read_stock_rsi(symbol)
@@ -95,39 +95,39 @@ def get_rsi_scripts():
 
 @app.route('/stock_data/d3', methods=['GET'])
 def get_twitter_scripts():
-   symbol = session.get('stock')
-   print symbol
-   import twitter_sentiment
-   ret = twitter_sentiment.findStock(symbol)
-   #return in json format
-   return jsonify(ret)
+    symbol = request.args['stock_symbol']
+    print symbol
+    import twitter_sentiment
+    ret = twitter_sentiment.findStock(symbol)
+    #return in json format
+    return jsonify(ret)
 #
 @app.route('/stock_data/d4', methods=['GET'])
 def get_daily_algo_scripts():
-   symbol = session.get('stock')
-   import daily_stock_prediction
-   ret = daily_stock_prediction.stock_data(symbol)
-   print symbol
-   #return in json format
-   return jsonify(ret)
+    symbol = request.args['stock_symbol']
+    import daily_stock_prediction
+    ret = daily_stock_prediction.stock_data(symbol)
+    print symbol
+    #return in json format
+    return jsonify(ret)
 
 @app.route('/stock_data/d5', methods=['GET'])
 def get_weekly_algo_scripts():
-   symbol = session.get('stock')
-   import weekly_stock_predictor
-   ret = weekly_stock_predictor.stockData(symbol)
-   print symbol
-   #return in json format
-   return jsonify(ret)
+    symbol = request.args['stock_symbol']
+    import weekly_stock_predictor
+    ret = weekly_stock_predictor.stockData(symbol)
+    print symbol
+    #return in json format
+    return jsonify(ret)
 #
 @app.route('/stock_data/d6', methods=['GET'])
 def get_monthly_algo_scripts():
-   symbol = session.get('stock')
-   import monthly_stock_predictor
-   ret = monthly_stock_predictor.stockData(symbol)
-   print symbol
-   #return in json format
-   return jsonify(ret)
+    symbol = request.args['stock_symbol']
+    import monthly_stock_predictor
+    ret = monthly_stock_predictor.stockData(symbol)
+    print symbol
+    #return in json format
+    return jsonify(ret)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
