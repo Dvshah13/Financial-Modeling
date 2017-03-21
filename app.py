@@ -88,7 +88,7 @@ def update():
     session['email'] = update_user.email
     session['first_name'] = update_user.first_name
     print new_user
-    update_user.save()
+    update_user.update()
     return render_template('portfolio_dashboard.html', email = session.get('email'), first_name = session.get('first_name'))
 
 @app.route('/stock_data', methods=['POST'])
