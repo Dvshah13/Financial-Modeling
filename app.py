@@ -78,7 +78,7 @@ def update_page():
     return render_template('profile_page.html', email = session.get('email'), first_name = session.get('first_name'), last_name = session.get('last_name'), password = session.get('password'))
 
 @app.route('/submit_profile', methods=['GET', 'POST'])
-def register():
+def update():
     update_user = User (
             first_name = request.form['fname'],
             last_name = request.form['lname'],
