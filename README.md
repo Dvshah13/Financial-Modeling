@@ -10,6 +10,7 @@ Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript,
 <br><br><b>Overview of Project:</b><br>
 DMR Capital was built to allow users to utilize machine learning systems, sentiment analysis and basic stock data and indicators to make informed trading decisions to generate above average market return. 
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
+
 <b>Features:</b>
 <li>Utilize Support Vector Machine (SVM) and Recurrent Neural Net (RNN) predicitive analysis to forecast future moves.</li>
 <li>Delivers sentiment analysis through twitter and sorted by positive and negative sentiment and filtered by polarity and subjectivity.</li>
