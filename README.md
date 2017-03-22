@@ -20,3 +20,4 @@ DMR Capital was built to allow users to utilize machine learning systems (Suppor
 
 ***
 
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen1.png?raw=true)
