@@ -15,9 +15,7 @@ DMR Capital was built to allow users to utilize machine learning systems (Suppor
 <li>Utilize Support Vector Machine (SVM) and Recurrent Neural Net (RNN) predicitive analysis to forecast future moves.</li>
 <li>Delivers sentiment analysis through twitter and sorted by positive and negative sentiment and filtered by polarity and subjectivity.</li>
 <li>On your dashboard have access to all the pertinant information you need to make informed and profitable decisions.</li>
-
-
-
 ***
-
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen1.png?raw=true)
+***
+<b>Technology Overview:</b><br>
