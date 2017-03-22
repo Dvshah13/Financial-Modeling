@@ -30,25 +30,31 @@ def multiple_days_forward(data, days):
 # print "6. DIS"
 # print "7. MSFT"
 
-### Heroku Routes ###
 # In[ ]:
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 def stock_data(symbol):
     data = list()
     if symbol == 'SPY':
-        url = '/app/daily_historical_prices/spy.csv'
+        url = '/app/daily_historical_prices/spy.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'  # local route
     elif symbol == 'AAPL':
-        url = '/app/daily_historical_prices/aapl.csv'
+        url = '/app/daily_historical_prices/aapl.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'  # local route
     elif symbol == 'GOOG':
-        url = '/app/daily_historical_prices/goog.csv'
+        url = '/app/daily_historical_prices/goog.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'  # local route
     elif symbol == 'FB':
-        url = '/app/daily_historical_prices/fb.csv'
+        url = '/app/daily_historical_prices/fb.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'  # local route
     elif symbol == 'AMZN':
-        url = '/app/daily_historical_prices/amzn.csv'
+        url = '/app/daily_historical_prices/amzn.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'  # local route
     elif symbol == 'DIS':
-        url = '/app/daily_historical_prices/dis.csv'
+        url = '/app/daily_historical_prices/dis.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'  # local route
     elif symbol == 'MSFT':
-        url = '/app/daily_historical_prices/msft.csv'
+        url = '/app/daily_historical_prices/msft.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'  # local route
 
     with open(url, 'r') as f:
         reader = csv.reader(f)
