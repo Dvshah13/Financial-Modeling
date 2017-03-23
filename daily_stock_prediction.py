@@ -3,7 +3,7 @@ import csv
 import urllib
 from sklearn import *
 from sklearn.metrics import *
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure import *
@@ -134,6 +134,7 @@ def stock_data(symbol):
     print "Accuracy: ", accuracy_svm
     print "Precision: ", precision_svm
     print "Recall: ", recall_svm
+
 
     net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
     ds = ClassificationDataSet(5, 1)

@@ -152,23 +152,6 @@ def stockData(symbol):
     return data_algo_monthly
 
 
-    # In[165]:
-    #
-    # bought_price = list()
-    # current_holdings = 0
-    # sell_price = list()
-    # for i in range(len(predicted)):
-    #     if predicted[i]:
-    #         current_holdings += 1
-    #         bought_price.append(data[50+(i+1), 0])
-    #     else:
-    #         for j in range(current_holdings):
-    #             sell_price.append(data[50+(i+1), 0])
-    #         current_holdings = 0
-    # print sum(sell_price) - sum(bought_price)
-    #
-    #
-    # # In[166]:
 
     # step = numpy.arange(0, len(test_labels))
     # plt.subplot(211)
