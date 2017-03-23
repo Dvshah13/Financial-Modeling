@@ -28,16 +28,16 @@ def define_stock_rsi(symbol):
 
 # Read the rsi data for whichever stock is chosen
 def read_stock_rsi(symbol):
-    # df_10da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=10)  # Heroku Routes
-    df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=10)  # Local Routes
+    df_10da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=10)  # Heroku Routes
+    # df_10da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=10)  # Local Routes
     df_10da['RSI']
     rsi_values_10da = df_10da['RSI'].mean()
-    # df_20da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=20)  # Heroku Routes
-    df_20da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=20)  # Local Routes
+    df_20da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=20)  # Heroku Routes
+    # df_20da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=20)  # Local Routes
     df_20da['RSI']
     rsi_values_20da = df_20da['RSI'].mean()
-    # df_50da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=50)  # Heroku Routes
-    df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=50)  # Local Routes
+    df_50da = pd.read_csv('/app/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=50)  # Heroku Routes
+    # df_50da = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/'+ symbol.lower()+' data' + '/rsi_value.csv', nrows=50)  # Local Routes
     rsi_values_50da = df_50da['RSI'].mean()
     print rsi_values_10da
     print "Worked"
