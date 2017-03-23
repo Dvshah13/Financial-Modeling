@@ -1,0 +1,42 @@
+# DMR Capital
+Financial Data Modeling using Machine Learning
+
+<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br>
+To Test: <br>
+Username - test@123.com<br>
+Password - Test123<br><br>
+<b>Programmer and Designer:</b> <br>
+Deepak Shah 
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
+
+<b>Technologies, Frameworks and Programming Languages:</b><br>
+Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript, jQuery, HTML, Sass CSS, Heroku
+<br><br>
+<b>Overview of Project:</b><br>
+DMR Capital was built to allow users to utilize machine learning systems (Support Vector Machine and Recurrent Neural Net), sentiment analysis and basic stock data and indicators to make informed trading decisions to generate above average market return. 
+<br><br>
+<b>Technology Details:</b><br>
+When starting the project, I knew I wanted to explore the relationship between machine learning and predicitive modeling as they are a natural fit.  I was intrigued with deep learning to see if the results might be enhanced by having something with back propagation.  I had also read about the success that classifiers had with data such as the stock market so that was the first avenue I decided to persue.  I found myself deciding between using logistic regression, decision trees and SVM.  Logistic regression would certainly be easier to scale and build but it's simplicity seemed to also be a hinderance in something as complex as the stock market.  Creating a decision boundry and making classifications would imo lead to weak correlation.  Decision trees were the next logical step but although it was capable of handling more complexity I was afraid of running the risk of overfitting and its strong bias which may yield good results in training but fail in testing.  I ended up going with SVMs because considering the large number of features and number of observations it would be a bit more accurate in this case and not overly bias towards the training data.  Next I decided I wanted to test out how well a neural network with backprop could compete with a classifier and I decided to go with the RNN.  My reasoning was RNNs typically handle time series and sequential data which the stock market is based on.  The RNN has some internal memory of what it saw previously and that would be very useful for data such as stock prices.  It uses that memory to decide how exactly it should operate on the next input. Thus an RNN remembers within the scope and for predictive modeling especially the stock market where momentum weighs heavily it would be essential to treat events as related and not just forget.  <br>
+I also wanted to add sentiment analysis as sentiment is one of the most difficult things to measure in the market.  It can play a huge role in stock movement but it largely hard to pinpoint.  I started using twitter as a medium for voices on the market to be heard and analyzed.  Using twitter's api and textblob, I was able to parse through an indivdual companies stock mentions and look at each stocks polarity and subjectivity.  By having these features, I attempted to categorize whether a response was positive or negative towards the equity and present this to the user.
+<br><br>
+<b>Features:</b>
+<li>Utilize Support Vector Machine (SVM) and Recurrent Neural Net (RNN) predicitive analysis to forecast future moves.</li>
+<li>Delivers sentiment analysis through twitter and sorted by positive and negative sentiment and filtered by polarity and subjectivity.</li>
+<li>On your dashboard have access to all the pertinant information you need to make informed and profitable decisions.</li>
+
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen1.png?raw=true)
+
+
+<br><br>
+<b>Screenshots</b><br><br>
+<b>SVM Classifier Code</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen2.png?raw=true)
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen3.png?raw=true)
+<br><b>RNN Code</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen4.png?raw=true)
+<br><b>Twitter Sentiment Analysis</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen5.png?raw=true)
+<br><b>Predicted Array and Actual Array</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen_console.png?raw=true)
+<br><b>MathPlotLib Graph</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/mathplotlib.png?raw=true)
