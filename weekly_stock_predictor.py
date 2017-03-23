@@ -12,7 +12,7 @@ from pybrain.structure.modules import *
 #%matplotlib inline
 
 
-# In[132]:
+
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
@@ -20,21 +20,8 @@ def multiple_days_forward(data, days):
     return data, labels
 
 
-# In[155]:
-
-# data = list()
-# print "Enter Company/Stock: "
-# print "1. SPY"
-# print "2. AAPL"
-# print "3. GOOG"
-# print "4. FB"
-# print "5. AMZN"
-# print "6. DIS"
-# print "7. MSFT"
-# case = int(input())
-
 ### Heroku Routes ###
-# In[156]:
+
 def stockData(symbol):
     data = list()
     if symbol == 'SPY':
@@ -194,20 +181,6 @@ def stockData(symbol):
 
 # In[165]:
 
-    # bought_price = list()
-    # current_holdings = 0
-    # sell_price = list()
-    # for i in range(len(predicted)):
-    #     if predicted[i]:
-    #         current_holdings += 1
-    #         bought_price.append(data[200+(i+1), 0])
-    #     else:
-    #         for j in range(current_holdings):
-    #             sell_price.append(data[200+(i+1), 0])
-    #         current_holdings = 0
-    # print sum(sell_price) - sum(bought_price)
-    #
-    #
     # # In[166]:
     #
     # step = numpy.arange(0, len(test_labels))
