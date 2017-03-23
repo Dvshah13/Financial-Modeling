@@ -1,7 +1,7 @@
 # DMR Capital
 Financial Data Modeling using Machine Learning
 
-<b><h3>Link to live site:</h3></b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br>
+<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br>
 To Test: <br>
 Username - test@123.com<br>
 Password - Test123<br><br>
