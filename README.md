@@ -36,3 +36,7 @@ I also wanted to add sentiment analysis as sentiment is one of the most difficul
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen4.png?raw=true)
 <br><b>Twitter Sentiment Analysis</b><br>
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen5.png?raw=true)
+<br><b>Predicted Array and Actual Array</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen_console.png?raw=true)
+<br><b>MathPlotLib Graph</b><br>
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/mathplotlib.png?raw=true)
