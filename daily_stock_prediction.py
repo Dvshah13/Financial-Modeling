@@ -35,26 +35,26 @@ def multiple_days_forward(data, days):
 def stock_data(symbol):
     data = list()
     if symbol == 'SPY':
-        url = '/app/daily_historical_prices/spy.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'  # local route
+        # url = '/app/daily_historical_prices/spy.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'  # local route
     elif symbol == 'AAPL':
-        url = '/app/daily_historical_prices/aapl.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'  # local route
+        # url = '/app/daily_historical_prices/aapl.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'  # local route
     elif symbol == 'GOOG':
-        url = '/app/daily_historical_prices/goog.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'  # local route
+        # url = '/app/daily_historical_prices/goog.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'  # local route
     elif symbol == 'FB':
-        url = '/app/daily_historical_prices/fb.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'  # local route
+        # url = '/app/daily_historical_prices/fb.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'  # local route
     elif symbol == 'AMZN':
-        url = '/app/daily_historical_prices/amzn.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'  # local route
+        # url = '/app/daily_historical_prices/amzn.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'  # local route
     elif symbol == 'DIS':
-        url = '/app/daily_historical_prices/dis.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'  # local route
+        # url = '/app/daily_historical_prices/dis.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'  # local route
     elif symbol == 'MSFT':
-        url = '/app/daily_historical_prices/msft.csv'  # Heroku route
-        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'  # local route
+        # url = '/app/daily_historical_prices/msft.csv'  # Heroku route
+        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'  # local route
 
     with open(url, 'r') as f:
         reader = csv.reader(f)
@@ -132,7 +132,6 @@ def stock_data(symbol):
 
 
     # In[ ]:
-
     predicted = clf.predict(test_features)
     accuracy_svm = accuracy_score(test_labels, predicted)
     precision_svm = recall_score(test_labels, predicted)
@@ -146,11 +145,9 @@ def stock_data(symbol):
     for i, j in zip(train_features, train_labels):
         ds.addSample(i, j)
 
-
     # In[ ]:
 
     trainer = BackpropTrainer(net, ds)
-
 
     # In[ ]:
 
@@ -175,7 +172,7 @@ def stock_data(symbol):
     print "Accuracy: ", accuracy_score(test_labels, predicted)
     print "Recall: ", recall_score(test_labels, predicted)
     print "Precision: ", precision_score(test_labels, predicted)
-    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn }
+    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn }
     return data_algo_daily
 # In[ ]:
 
