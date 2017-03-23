@@ -133,14 +133,14 @@ def stock_data(symbol):
 
     # In[ ]:
     predicted = clf.predict(test_features)
-    accuracy_svm = accuracy_score(test_labels, predicted)
-    precision_svm = recall_score(test_labels, predicted)
-    recall_svm = precision_score(test_labels, predicted)
     predicted_svm = predicted[-1]
     if predicted_svm > 0:
         predicted_svm = "Positive"
     else:
         predicted_svm = "Negative"
+    accuracy_svm = accuracy_score(test_labels, predicted)
+    precision_svm = recall_score(test_labels, predicted)
+    recall_svm = precision_score(test_labels, predicted)
     print "Accuracy: ", accuracy_svm
     print "Precision: ", precision_svm
     print "Recall: ", recall_svm
@@ -170,6 +170,20 @@ def stock_data(symbol):
     predicted = numpy.array(predicted)
 
 
+
+    predicted_rnn = predicted[-1]
+    if predicted_rnn > 0:
+        predicted_rnn = "Positive"
+    else:
+        predicted_rnn = "Negative"
+    accuracy_rnn = accuracy_score(test_labels, predicted)
+    recall_rnn = recall_score(test_labels, predicted)
+    precision_rnn = precision_score(test_labels, predicted)
+    print "Accuracy: ", accuracy_score(test_labels, predicted)
+    print "Recall: ", recall_score(test_labels, predicted)
+    print "Precision: ", precision_score(test_labels, predicted)
+    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn, 'Predicted RNN': predicted_rnn }
+    return data_algo_daily
     # In[ ]:
 
 
@@ -201,48 +215,36 @@ def stock_data(symbol):
 #net.addConnection(FullConnection(net['hidden'], net['output'], name = 'c2'))
 #net.addRecurrentConnection(FullConnection(net['hidden'], net['hidden'], name='c3'))
 #
-    net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
-    ds = ClassificationDataSet(5, 1)
-    for i, j in zip(train_features, train_labels):
-        ds.addSample(i, j)
+    # net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
+    # ds = ClassificationDataSet(5, 1)
+    # for i, j in zip(train_features, train_labels):
+    #     ds.addSample(i, j)
+    #
+
+    # In[ ]:
+
+    # trainer = BackpropTrainer(net, ds)
+    #
+    #
+    # # In[ ]:
+    #
+    # epochs = 10
+    # for i in range(epochs):
+    #     trainer.train()
+    #
+    #
+    # # In[ ]:
+    #
+    # predicted = list()
+    # for i in test_features:
+    #     #print net.activate(i)
+    #     predicted.append(int(net.activate(i)>0.5))
+    # predicted = numpy.array(predicted)
 
 
     # In[ ]:
 
-    trainer = BackpropTrainer(net, ds)
 
-
-    # In[ ]:
-
-    epochs = 10
-    for i in range(epochs):
-        trainer.train()
-
-
-    # In[ ]:
-
-    predicted = list()
-    for i in test_features:
-        #print net.activate(i)
-        predicted.append(int(net.activate(i)>0.5))
-    predicted = numpy.array(predicted)
-
-
-    # In[ ]:
-
-    predicted_rnn = predicted[-1]
-    if predicted_rnn > 0:
-        predicted_rnn = "Positive"
-    else:
-        predicted_rnn = "Negative"
-    accuracy_rnn = accuracy_score(test_labels, predicted)
-    recall_rnn = recall_score(test_labels, predicted)
-    precision_rnn = precision_score(test_labels, predicted)
-    print "Accuracy: ", accuracy_score(test_labels, predicted)
-    print "Recall: ", recall_score(test_labels, predicted)
-    print "Precision: ", precision_score(test_labels, predicted)
-    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn, 'Predicted RNN': predicted_rnn }
-    return data_algo_daily
 #
 #
 # In[ ]:
