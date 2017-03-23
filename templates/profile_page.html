@@ -10,7 +10,7 @@
 <div class="container-fluid" id="account-signup-container">
     <div class="row signup-form-header-row">
         <div class="col-xs-12 header-row signup-form-header typewriter-sm">
-            <h2>Profile</h2>
+            <h2 style="text-align:center;">Profile</h2>
         </div>
     </div>
      <div class="row messages">
@@ -24,7 +24,7 @@
     <div class="col-xs-4"> </div>
     <div class="container-fluid signup-form-content-row">
         <div class="content-row signup-form-content">
-            <form class="signup-form col-xs-4" method="POST" action="/submit_profile">
+            <form class="signup-form col-xs-4" method="POST" action="/submit_profile" style="text-align:center;">
                 <label>First Name</label>
                 <div class="form-group first-name">
                     <input type="text" id="first-name" value={{ first_name }} name="fname" placeholder="First Name" minlength="2" required>
@@ -40,7 +40,7 @@
                 <label>Password</label>
                 <div class="form-group password">
                     <input type="password" id="password" name="password" placeholder="Password" minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required><br />
-                    <label><h5>(minimum 6 characters; must use at least one uppercase letter and at least one number)</h5></label>
+                    <label><h5>(minimum 6 characters must use at least one<br /> uppercase letter and at least one number)</h5></label>
                 </div>
                 <label>Confirm Password</label>
                 <div class="form-group password-confirm">
