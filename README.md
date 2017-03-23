@@ -19,3 +19,4 @@ DMR Capital was built to allow users to utilize machine learning systems (Suppor
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen1.png?raw=true)
 
 <b>Technology Details:</b><br>
+When starting the project, I knew I wanted to explore the relationship between machine learning and predicitive modeling as they are a natural fit.  I was intrigued with deep learning to see if the results might be enhanced by having both something with back propagation.  
