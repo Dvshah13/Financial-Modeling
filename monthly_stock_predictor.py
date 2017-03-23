@@ -38,26 +38,26 @@ def multiple_days_forward(data, days):
 def stockData(symbol):
     data = list()
     if symbol == 'SPY':
-        # url = '/app/monthly_historical_prices/spy.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/spy.csv'  # local route
+        url = '/app/monthly_historical_prices/spy.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/spy.csv'  # local route
     elif symbol == 'AAPL':
-        # url = '/app/monthly_historical_prices/aapl.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/aapl.csv'  # local route
+        url = '/app/monthly_historical_prices/aapl.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/aapl.csv'  # local route
     elif symbol == 'GOOG':
-        # url = '/app/monthly_historical_prices/goog.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/goog.csv'  # local route
+        url = '/app/monthly_historical_prices/goog.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/goog.csv'  # local route
     elif symbol == 'FB':
-        # url = '/app/monthly_historical_prices/fb.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/fb.csv'  # local route
+        url = '/app/monthly_historical_prices/fb.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/fb.csv'  # local route
     elif symbol == 'AMZN':
-        # url = '/app/monthly_historical_prices/amzn.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'  # local route
+        url = '/app/monthly_historical_prices/amzn.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/amzn.csv'  # local route
     elif symbol == 'DIS':
-        # url = '/app/monthly_historical_prices/dis.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'  # local route
+        url = '/app/monthly_historical_prices/dis.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/dis.csv'  # local route
     elif symbol == 'MSFT':
-        # url = '/app/monthly_historical_prices/msft.csv'  # Heroku Routes
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'  # local route
+        url = '/app/monthly_historical_prices/msft.csv'  # Heroku Routes
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/monthly_historical_prices/msft.csv'  # local route
 
     with open(url, 'r') as f:
         reader = csv.reader(f)
@@ -137,13 +137,18 @@ def stockData(symbol):
     # In[164]:
 
     predicted = clf.predict(test_features)
+    predicted_svm = predicted[-1]
+    if predicted_svm > 0:
+        predicted_svm = "Positive"
+    else:
+        predicted_svm = "Negative"
     accuracy = accuracy_score(test_labels, predicted)
     precision = recall_score(test_labels, predicted)
     recall = precision_score(test_labels, predicted)
     print "Accuracy: ", accuracy
     print "Precision: ", precision
     print "Recall: ", recall
-    data_algo_monthly = { 'SVM Accuracy': accuracy, 'SVM Precision': precision, 'SVM Recall': recall }
+    data_algo_monthly = { 'SVM Accuracy': accuracy, 'SVM Precision': precision, 'SVM Recall': recall, 'Predicted SVM': predicted_svm }
     return data_algo_monthly
 
 

@@ -3,7 +3,7 @@ import csv
 import urllib
 from sklearn import *
 from sklearn.metrics import *
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure import *
@@ -35,26 +35,26 @@ def multiple_days_forward(data, days):
 def stock_data(symbol):
     data = list()
     if symbol == 'SPY':
-        # url = '/app/daily_historical_prices/spy.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'  # local route
+        url = '/app/daily_historical_prices/spy.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv'  # local route
     elif symbol == 'AAPL':
-        # url = '/app/daily_historical_prices/aapl.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'  # local route
+        url = '/app/daily_historical_prices/aapl.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/aapl.csv'  # local route
     elif symbol == 'GOOG':
-        # url = '/app/daily_historical_prices/goog.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'  # local route
+        url = '/app/daily_historical_prices/goog.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/goog.csv'  # local route
     elif symbol == 'FB':
-        # url = '/app/daily_historical_prices/fb.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'  # local route
+        url = '/app/daily_historical_prices/fb.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/fb.csv'  # local route
     elif symbol == 'AMZN':
-        # url = '/app/daily_historical_prices/amzn.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'  # local route
+        url = '/app/daily_historical_prices/amzn.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/amzn.csv'  # local route
     elif symbol == 'DIS':
-        # url = '/app/daily_historical_prices/dis.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'  # local route
+        url = '/app/daily_historical_prices/dis.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/dis.csv'  # local route
     elif symbol == 'MSFT':
-        # url = '/app/daily_historical_prices/msft.csv'  # Heroku route
-        url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'  # local route
+        url = '/app/daily_historical_prices/msft.csv'  # Heroku route
+        # url = '/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/msft.csv'  # local route
 
     with open(url, 'r') as f:
         reader = csv.reader(f)
@@ -136,6 +136,11 @@ def stock_data(symbol):
     accuracy_svm = accuracy_score(test_labels, predicted)
     precision_svm = recall_score(test_labels, predicted)
     recall_svm = precision_score(test_labels, predicted)
+    predicted_svm = predicted[-1]
+    if predicted_svm > 0:
+        predicted_svm = "Positive"
+    else:
+        predicted_svm = "Negative"
     print "Accuracy: ", accuracy_svm
     print "Precision: ", precision_svm
     print "Recall: ", recall_svm
@@ -166,14 +171,20 @@ def stock_data(symbol):
 
 
     # In[ ]:
+    predicted_rnn = predicted[-1]
+    if predicted_rnn > 0:
+        predicted_rnn = "Positive"
+    else:
+        predicted_rnn = "Negative"
     accuracy_rnn = accuracy_score(test_labels, predicted)
     recall_rnn = recall_score(test_labels, predicted)
     precision_rnn = precision_score(test_labels, predicted)
     print "Accuracy: ", accuracy_score(test_labels, predicted)
     print "Recall: ", recall_score(test_labels, predicted)
     print "Precision: ", precision_score(test_labels, predicted)
-    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn }
+    data_algo_daily = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn, 'Predicted RNN': predicted_rnn }
     return data_algo_daily
+
 # In[ ]:
 
 # step = numpy.arange(0, len(test_labels))
@@ -251,7 +262,7 @@ def stock_data(symbol):
 # plt.xlabel('Days')
 # plt.ylabel('Predicted Values')
 # plt.show()
-#plt.plot(plot_predicted)
+# plt.plot(plot_predicted)
 
 
 # In[ ]:
