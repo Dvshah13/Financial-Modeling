@@ -1,7 +1,10 @@
 # DMR Capital
 Financial Data Modeling using Machine Learning
 
-<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br><br>
+<b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br>
+To Test: <br>
+Username - test@123.com<br>
+Password - Test123<br><br>
 <b>Programmer and Designer:</b> <br>
 Deepak Shah 
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
