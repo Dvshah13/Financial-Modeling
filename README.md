@@ -29,7 +29,7 @@ I also wanted to add sentiment analysis as sentiment is one of the most difficul
 <b>SVM Classifier Code</b><br>
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen2.png?raw=true)
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen3.png?raw=true)
-<b>RNN Code</b><br>
+<br><b>RNN Code</b><br>
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen4.png?raw=true)
-<b>Twitter Sentiment Analysis</b><br>
+<br><b>Twitter Sentiment Analysis</b><br>
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen5.png?raw=true)
