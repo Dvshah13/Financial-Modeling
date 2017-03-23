@@ -2,9 +2,10 @@
 Financial Data Modeling using Machine Learning
 
 <b>Link to live site:</b> <a href='https://financial-modeling-dmr.herokuapp.com/'>DMR Capital</a><br><br>
-![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
 <b>Programmer and Designer:</b> <br>
 Deepak Shah 
+![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
+
 <br><br>
 <b>Technologies, Frameworks and Programming Languages:</b><br>
 Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript, jQuery, HTML, Sass CSS, Heroku
