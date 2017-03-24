@@ -126,26 +126,28 @@ def figure():
     response.mimetype = 'image/png'
     return response
 
-@app.route('/stock_chart', methods=['GET'])
-def stock_chart():
-    symbol = request.args['stock_symbol']
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    # pd.read_csv('/app/daily_historical_prices/spy.csv', nrows=10)
-    if symbol == 'AAPL':
-        stock_csv = '/app/daily_historical_prices/aapl.csv'
-    df = pd.read_csv(stock_csv, nrows=20)
-    date_graph = pd.to_datetime(df['Date'])
-    adj_close = df['Adj Close']
-    xs = date_graph
-    ys = adj_close
-    axis.plot(xs, ys)
-    canvas = FigureCanvas(fig)
-    output = StringIO.StringIO()
-    canvas.print_png(output)
-    response = make_response(output.getvalue())
-    response.mimetype = 'image/png'
-    return response
+### Look to revisit later
+
+# @app.route('/stock_chart', methods=['GET'])
+# def stock_chart():
+#     symbol = request.args['stock_symbol']
+#     fig = Figure()
+#     axis = fig.add_subplot(1, 1, 1)
+#     # pd.read_csv('/app/daily_historical_prices/spy.csv', nrows=10)
+#     if symbol == 'AAPL':
+#         stock_csv = '/app/daily_historical_prices/aapl.csv'
+#     df = pd.read_csv(stock_csv, nrows=20)
+#     date_graph = pd.to_datetime(df['Date'])
+#     adj_close = df['Adj Close']
+#     xs = date_graph
+#     ys = adj_close
+#     axis.plot(xs, ys)
+#     canvas = FigureCanvas(fig)
+#     output = StringIO.StringIO()
+#     canvas.print_png(output)
+#     response = make_response(output.getvalue())
+#     response.mimetype = 'image/png'
+#     return response
 
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
