@@ -150,6 +150,9 @@ body {
        <img src="{{ url_for('figure') }}" alt="Image Placeholder" height="500">
   </div>
   <div id="content">
+  <div id="stock_chart" class="hidden">
+      <img src="{{ url_for('figure') }}" alt="Image Placeholder" height="500">
+  </div>
   <div id='stockData1' class="hidden"><p class="table_header_top"> Basic Data </p>
   </div>
   <div id='stockData2' class="hidden"><p class="table_header_float"> Key Indicator Data </p>
@@ -208,6 +211,13 @@ $('#my-dropdown li').click(function () {
                     $("#spy_chart").addClass("hidden");
                 }
             });
+            $.ajax({
+                url: url,
+                data: JSON.stringify({ stock_symbol: stock_symbol }),
+                success: function (data) {
+                    $("#stock_chart").html('<img src="{{ url_for("stock_chart") }}" alt="Image Placeholder" height="300">').removeClass("hidden");
+                }
+            });
             // basic stock data
         $.getJSON("/stock_data/d1",
         { stock_symbol: stock_symbol },
@@ -258,7 +268,6 @@ $('#my-dropdown li').click(function () {
                 $("#stockData5").append('<tr class="data_table"><td>' + i + '</td>' + '<td>' + field + '</td></tr>').removeClass("hidden");
             });
         });
-
             // monthly svm and rnn analysis
         $.getJSON("/stock_data/d6",
         { stock_symbol: stock_symbol },
