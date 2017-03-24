@@ -133,7 +133,7 @@ def stock_chart():
     fig = Figure()
     axis = fig.add_subplot(1, 1, 1)
     # pd.read_csv('/app/daily_historical_prices/spy.csv', nrows=10)
-    if symbol = 'AAPL':
+    if symbol == 'AAPL':
         stock_csv = '/app/daily_historical_prices/aapl.csv'
         df = pd.read_csv(stock_csv, nrows=20)
         date_graph = pd.to_datetime(df['Date'])
