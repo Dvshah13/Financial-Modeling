@@ -8,9 +8,9 @@ import csv
 import pandas as pd
 import datetime
 
-app = Flask(__name__)
-
-@app.route('/')
+# app = Flask(__name__)
+#
+# @app.route('/')
 def plot():
     fig = Figure()
     axis = fig.add_subplot(1, 1, 1)
@@ -27,8 +27,7 @@ def plot():
     canvas.print_png(output)
     response = make_response(output.getvalue())
     response.mimetype = 'image/png'
-
     return response
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

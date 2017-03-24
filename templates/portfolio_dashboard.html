@@ -145,6 +145,10 @@ body {
   <p id="menu_instructions">Click on the left menu to access your portfolio</p>
   <div id ="stockNameHeader">
   </div>
+  <div id="spy_chart">
+        <h3>Current Market Status - S&P 500 Chart</h3>
+       <img src="{{ url_for('figure') }}" alt="Image Placeholder" height="500">
+  </div>
   <div id="content">
   <div id='stockData1' class="hidden"><p class="table_header_top"> Basic Data </p>
   </div>
@@ -201,6 +205,7 @@ $('#my-dropdown li').click(function () {
                     $("#stockNameHeader").html("<h2>" + "DMR Capital's Data and Analysis for: " + stock_symbol + "</h2>" + '<span style="color:red">Note: </span><p>Please be patient as ML Algorithms may take time to load</p>');
                     $("#menu_instructions").hide();
                     $("#welcome_header").hide();
+                    $("#spy_chart").addClass("hidden");
                 }
             });
             // basic stock data

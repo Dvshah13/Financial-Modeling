@@ -1,10 +1,19 @@
-from flask import Flask, request, session, redirect, render_template, jsonify
+from flask import Flask, request, session, redirect, render_template, jsonify, make_response
 from flask.ext.bcrypt import Bcrypt
 import logging
 from mongoengine import *
 import datetime
 from flask_restful import reqparse
 import json
+
+import random
+import StringIO
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import csv
+import pandas as pd
+
 
 app = Flask(__name__)
 app.secret_key = 'whoathere'
@@ -98,6 +107,24 @@ def stockInfo():
     session['stock'] = stock
     print stock
     return "Worked"
+
+@app.route('/figure', methods=['GET'])
+def figure():
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    # pd.read_csv('/app/daily_historical_prices/spy.csv', nrows=10)
+    df = pd.read_csv('/Users/deepakshah/Documents/Digital Crafts/Machine Learning/Financial Modeling/daily_historical_prices/spy.csv', nrows=20)
+    date_graph = pd.to_datetime(df['Date'])
+    adj_close = df['Adj Close']
+    xs = date_graph
+    ys = adj_close
+    axis.plot(xs, ys)
+    canvas = FigureCanvas(fig)
+    output = StringIO.StringIO()
+    canvas.print_png(output)
+    response = make_response(output.getvalue())
+    response.mimetype = 'image/png'
+    return response
 
 @app.route('/stock_data/d1', methods=['GET'])
 def get_data_scripts():
