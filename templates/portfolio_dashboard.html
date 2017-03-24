@@ -213,7 +213,7 @@ $('#my-dropdown li').click(function () {
             });
             $.ajax({
                 url: '/stock_chart',
-                data: JSON.stringify({ stock_symbol: stock_symbol }),
+                data: { stock_symbol: stock_symbol },
                 success: function (data) {
                     $("#stock_chart").html('<img src="{{ url_for("stock_chart") }}" alt="Image Placeholder" height="300">').removeClass("hidden");
                 }

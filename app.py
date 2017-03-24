@@ -128,8 +128,7 @@ def figure():
 
 @app.route('/stock_chart', methods=['GET'])
 def stock_chart():
-    data = request.json
-    symbol = data['stock_symbol']
+    symbol = request.args['stock_symbol']
     fig = Figure()
     axis = fig.add_subplot(1, 1, 1)
     # pd.read_csv('/app/daily_historical_prices/spy.csv', nrows=10)
