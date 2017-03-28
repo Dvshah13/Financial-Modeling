@@ -59,31 +59,24 @@ def stockData(symbol):
     print numpy.shape(data)
 
 
-    # In[157]:
-
     def t_high(t, X):
         return max(X[:-t])
 
 
-    # In[158]:
 
     def t_low(t, X):
         return min(X[:-t])
 
 
-    # In[159]:
 
     def volume_high(t, X):
         return max(X[:-t])
 
 
-    # In[160]:
 
     def volume_low(t, X):
         return min(X[:-t])
 
-
-    # In[161]:
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -106,7 +99,6 @@ def stockData(symbol):
         return features[:, indices], data
 
 
-    # In[162]:
 
     features, data = extract_features(data, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
     train_features = features[:200]
@@ -115,13 +107,10 @@ def stockData(symbol):
     test_labels = labels[200:-1]
 
 
-    # In[163]:
-
     clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
     clf.fit(train_features, train_labels)
 
 
-    # In[164]:
 
     predicted = clf.predict(test_features)
     predicted_svm = predicted[-1]
@@ -136,26 +125,22 @@ def stockData(symbol):
     print "Precision: ", precision_svm
     print "Recall: ", recall_svm
 
-
+## RNN
     net = buildNetwork(12, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
     ds = ClassificationDataSet(12, 1)
     for i, j in zip(train_features, train_labels):
         ds.addSample(i, j)
 
 
-    # In[168]:
-
     trainer = BackpropTrainer(net, ds)
 
 
-    # In[169]:
 
     epochs = 100
     for i in range(epochs):
         trainer.train()
 
 
-    # In[170]:
 
     predicted = list()
     for i in test_features:
@@ -164,7 +149,6 @@ def stockData(symbol):
     predicted = numpy.array(predicted)
 
 
-    # In[171]:
     predicted_rnn = predicted[-1]
     if predicted_rnn > 0:
         predicted_rnn = "Positive"
@@ -179,9 +163,7 @@ def stockData(symbol):
     data_algo_weekly = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn, 'Predicted RNN': predicted_rnn }
     return data_algo_weekly
 
-# In[165]:
 
-    # # In[166]:
     #
     # step = numpy.arange(0, len(test_labels))
     # plt.subplot(211)

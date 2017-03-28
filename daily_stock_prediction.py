@@ -11,8 +11,7 @@ from pybrain.datasets import *
 from pybrain.structure.modules import *
 #%matplotlib inline
 
-# In[ ]:
-#
+
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
@@ -20,7 +19,7 @@ def multiple_days_forward(data, days):
 
 
 
-# In[ ]:
+
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 def stock_data(symbol):
     data = list()
@@ -59,31 +58,23 @@ def stock_data(symbol):
     print numpy.shape(data)
 
 
-    # In[ ]:
 
     def t_high(t, X):
         return max(X[:-t])
 
 
-    # In[ ]:
 
     def t_low(t, X):
         return min(X[:-t])
 
 
-    # In[ ]:
-
     def volume_high(t, X):
         return max(X[:-t])
 
 
-    # In[ ]:
-
     def volume_low(t, X):
         return min(X[:-t])
 
-
-    # In[ ]:
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -106,22 +97,15 @@ def stock_data(symbol):
         return features[:, indices], data
 
 
-    # In[ ]:
-
     features, data = extract_features(data, [0, 1, 2, 3, 4])
     train_features = features[:1000]
     test_features = features[1000:]
     train_labels = labels[:1000]
     test_labels = labels[1000:-1]
 
-
-    # In[ ]:
-
     clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
     clf.fit(train_features, train_labels)
 
-
-    # In[ ]:
     predicted = clf.predict(test_features)
     predicted_svm = predicted[-1]
     if predicted_svm > 0:
@@ -135,31 +119,24 @@ def stock_data(symbol):
     print "Precision: ", precision_svm
     print "Recall: ", recall_svm
 
+## RNN
 
     net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
     ds = ClassificationDataSet(5, 1)
     for i, j in zip(train_features, train_labels):
         ds.addSample(i, j)
 
-    # In[ ]:
-
     trainer = BackpropTrainer(net, ds)
-
-    # In[ ]:
 
     epochs = 10
     for i in range(epochs):
         trainer.train()
-
-
-    # In[ ]:
 
     predicted = list()
     for i in test_features:
         #print net.activate(i)
         predicted.append(int(net.activate(i)>0.5))
     predicted = numpy.array(predicted)
-
 
 
     predicted_rnn = predicted[-1]

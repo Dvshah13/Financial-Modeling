@@ -12,7 +12,7 @@ from pybrain.structure.modules import *
 #%matplotlib inline
 
 
-# In[132]:
+
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
@@ -20,21 +20,7 @@ def multiple_days_forward(data, days):
     return data, labels
 
 
-# In[155]:
-
-# data = list()
-# print "Enter Company/Stock: "
-# print "1. SPY"
-# print "2. AAPL"
-# print "3. GOOG"
-# print "4. FB"
-# print "5. AMZN"
-# print "6. DIS"
-# print "7. MSFT"
-# case = int(input())
-
 ### Heroku Routes ###
-# In[156]:
 def stockData(symbol):
     data = list()
     if symbol == 'SPY':
@@ -72,31 +58,24 @@ def stockData(symbol):
     print numpy.shape(data)
 
 
-    # In[157]:
-
     def t_high(t, X):
         return max(X[:-t])
 
 
-    # In[158]:
 
     def t_low(t, X):
         return min(X[:-t])
 
 
-    # In[159]:
-
     def volume_high(t, X):
         return max(X[:-t])
 
 
-    # In[160]:
 
     def volume_low(t, X):
         return min(X[:-t])
 
 
-    # In[161]:
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -119,7 +98,6 @@ def stockData(symbol):
         return features[:, indices], data
 
 
-    # In[162]:
 
     features, data = extract_features(data, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
     train_features = features[:50]
@@ -128,13 +106,10 @@ def stockData(symbol):
     test_labels = labels[50:-1]
 
 
-    # In[163]:
 
     clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
     clf.fit(train_features, train_labels)
 
-
-    # In[164]:
 
     predicted = clf.predict(test_features)
     predicted_svm = predicted[-1]
