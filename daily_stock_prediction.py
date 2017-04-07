@@ -57,24 +57,17 @@ def stock_data(symbol):
     print numpy.shape(labels)
     print numpy.shape(data)
 
-
-
     def t_high(t, X):
         return max(X[:-t])
-
-
 
     def t_low(t, X):
         return min(X[:-t])
 
-
     def volume_high(t, X):
         return max(X[:-t])
 
-
     def volume_low(t, X):
         return min(X[:-t])
-
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -95,7 +88,6 @@ def stock_data(symbol):
         features = numpy.column_stack((features, Odiff_by_highlow, Cdiff_by_highlow, mov_avg_by_data))
         print numpy.shape(features)
         return features[:, indices], data
-
 
     features, data = extract_features(data, [0, 1, 2, 3, 4])
     train_features = features[:1000]
@@ -137,7 +129,6 @@ def stock_data(symbol):
         #print net.activate(i)
         predicted.append(int(net.activate(i)>0.5))
     predicted = numpy.array(predicted)
-
 
     predicted_rnn = predicted[-1]
     if predicted_rnn > 0:

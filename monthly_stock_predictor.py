@@ -11,14 +11,10 @@ from pybrain.datasets import *
 from pybrain.structure.modules import *
 #%matplotlib inline
 
-
-
-
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
     return data, labels
-
 
 ### Heroku Routes ###
 def stockData(symbol):
@@ -57,25 +53,17 @@ def stockData(symbol):
     print numpy.shape(labels)
     print numpy.shape(data)
 
-
     def t_high(t, X):
         return max(X[:-t])
-
-
 
     def t_low(t, X):
         return min(X[:-t])
 
-
     def volume_high(t, X):
         return max(X[:-t])
 
-
-
     def volume_low(t, X):
         return min(X[:-t])
-
-
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -97,19 +85,14 @@ def stockData(symbol):
         print numpy.shape(features)
         return features[:, indices], data
 
-
-
     features, data = extract_features(data, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
     train_features = features[:50]
     test_features = features[50:]
     train_labels = labels[:50]
     test_labels = labels[50:-1]
 
-
-
     clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
     clf.fit(train_features, train_labels)
-
 
     predicted = clf.predict(test_features)
     predicted_svm = predicted[-1]
@@ -125,8 +108,6 @@ def stockData(symbol):
     print "Recall: ", recall
     data_algo_monthly = { 'SVM Accuracy': accuracy, 'SVM Precision': precision, 'SVM Recall': recall, 'Predicted SVM': predicted_svm }
     return data_algo_monthly
-
-
 
     # step = numpy.arange(0, len(test_labels))
     # plt.subplot(211)

@@ -11,14 +11,10 @@ from pybrain.datasets import *
 from pybrain.structure.modules import *
 #%matplotlib inline
 
-
-
-
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
     return data, labels
-
 
 ### Heroku Routes ###
 
@@ -58,25 +54,17 @@ def stockData(symbol):
     print numpy.shape(labels)
     print numpy.shape(data)
 
-
     def t_high(t, X):
         return max(X[:-t])
-
-
 
     def t_low(t, X):
         return min(X[:-t])
 
-
-
     def volume_high(t, X):
         return max(X[:-t])
 
-
-
     def volume_low(t, X):
         return min(X[:-t])
-
 
     def extract_features(data, indices):
         #remove the volume feature because of 0's
@@ -98,19 +86,14 @@ def stockData(symbol):
         print numpy.shape(features)
         return features[:, indices], data
 
-
-
     features, data = extract_features(data, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
     train_features = features[:200]
     test_features = features[200:]
     train_labels = labels[:200]
     test_labels = labels[200:-1]
 
-
     clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
     clf.fit(train_features, train_labels)
-
-
 
     predicted = clf.predict(test_features)
     predicted_svm = predicted[-1]
@@ -131,23 +114,17 @@ def stockData(symbol):
     for i, j in zip(train_features, train_labels):
         ds.addSample(i, j)
 
-
     trainer = BackpropTrainer(net, ds)
-
-
 
     epochs = 100
     for i in range(epochs):
         trainer.train()
-
-
 
     predicted = list()
     for i in test_features:
         #print net.activate(i)
         predicted.append(int(net.activate(i)>0.5))
     predicted = numpy.array(predicted)
-
 
     predicted_rnn = predicted[-1]
     if predicted_rnn > 0:
@@ -163,8 +140,7 @@ def stockData(symbol):
     data_algo_weekly = { 'SVM Accuracy': accuracy_svm, 'SVM Precision': precision_svm, 'SVM Recall': recall_svm, 'Predicted SVM': predicted_svm, 'RNN Accuracy': accuracy_rnn, 'RNN Precision': precision_rnn, 'RNN Recall': recall_rnn, 'Predicted RNN': predicted_rnn }
     return data_algo_weekly
 
-
-    #
+    ## Plot with matplotlib
     # step = numpy.arange(0, len(test_labels))
     # plt.subplot(211)
     # plt.xlim(-1, len(test_labels) + 1)
