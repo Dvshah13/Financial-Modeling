@@ -53,10 +53,10 @@ def stockData(symbol):
     print numpy.shape(labels)
     print numpy.shape(data)
 
-    def t_high(t, X):
+    def p_high(t, X):
         return max(X[:-t])
 
-    def t_low(t, X):
+    def p_low(t, X):
         return min(X[:-t])
 
     def volume_high(t, X):
@@ -71,17 +71,17 @@ def stockData(symbol):
         #remove the first row because it is a header
         data2 = data[1:, :]
         features = data[:-1] - data2
-        Phigh = t_high(5, data[:, 1])
-        Plow = t_low(5, data[:, 2])
-        vhigh = volume_high(5, data[:, 4])
-        vlow = volume_low(5, data[:, 4])
-        Odiff_by_highlow = features[:, 0]/ float(Phigh - Plow)
-        Cdiff_by_highlow = features[:, 1]/float(Phigh - Plow)
+        price_high = p_high(5, data[:, 1])
+        price_low = p_low(5, data[:, 2])
+        vol_high = volume_high(5, data[:, 4])
+        vol_low = volume_low(5, data[:, 4])
+        var1_diff_by_highlow = features[:, 0]/ float(price_high - price_low)
+        var2_diff_by_highlow = features[:, 1]/float(price_high - price_low)
         mov_avg_by_data = list()
         for i in range(len(features)):
             mov_avg_by_data.append(numpy.mean(data[:i+1, :], axis = 0)/data[i, :])
         mov_avg_by_data = numpy.array(mov_avg_by_data)
-        features = numpy.column_stack((features, Odiff_by_highlow, Cdiff_by_highlow, mov_avg_by_data))
+        features = numpy.column_stack((features, var1_diff_by_highlow, var2_diff_by_highlow, mov_avg_by_data))
         print numpy.shape(features)
         return features[:, indices], data
 
@@ -91,7 +91,7 @@ def stockData(symbol):
     train_labels = labels[:50]
     test_labels = labels[50:-1]
 
-    clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001)
+    clf = svm.SVC(kernel = 'rbf', C = 1.2, gamma = 0.001) # rbf kernel
     clf.fit(train_features, train_labels)
 
     predicted = clf.predict(test_features)

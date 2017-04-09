@@ -54,10 +54,10 @@ def stockData(symbol):
     print numpy.shape(labels)
     print numpy.shape(data)
 
-    def t_high(t, X):
+    def p_high(t, X):
         return max(X[:-t])
 
-    def t_low(t, X):
+    def p_low(t, X):
         return min(X[:-t])
 
     def volume_high(t, X):
@@ -67,22 +67,21 @@ def stockData(symbol):
         return min(X[:-t])
 
     def extract_features(data, indices):
-        #remove the volume feature because of 0's
         data = data[:, [0, 1, 2, 3, 5]]
         #remove the first row because it is a header
         data2 = data[1:, :]
         features = data[:-1] - data2
-        Phigh = t_high(5, data[:, 1])
-        Plow = t_low(5, data[:, 2])
-        vhigh = volume_high(5, data[:, 4])
-        vlow = volume_low(5, data[:, 4])
-        Odiff_by_highlow = features[:, 0]/ float(Phigh - Plow)
-        Cdiff_by_highlow = features[:, 1]/float(Phigh - Plow)
+        price_high = p_high(5, data[:, 1])
+        price_low = p_low(5, data[:, 2])
+        vol_high = volume_high(5, data[:, 4])
+        vol_low = volume_low(5, data[:, 4])
+        var1_diff_by_highlow = features[:, 0]/ float(price_high - price_low)
+        var2_diff_by_highlow = features[:, 1]/float(price_high - price_low)
         mov_avg_by_data = list()
         for i in range(len(features)):
             mov_avg_by_data.append(numpy.mean(data[:i+1, :], axis = 0)/data[i, :])
         mov_avg_by_data = numpy.array(mov_avg_by_data)
-        features = numpy.column_stack((features, Odiff_by_highlow, Cdiff_by_highlow, mov_avg_by_data))
+        features = numpy.column_stack((features, price_diff_by_highlow, price_diff_by_highlow, mov_avg_by_data))
         print numpy.shape(features)
         return features[:, indices], data
 
@@ -122,7 +121,6 @@ def stockData(symbol):
 
     predicted = list()
     for i in test_features:
-        #print net.activate(i)
         predicted.append(int(net.activate(i)>0.5))
     predicted = numpy.array(predicted)
 
