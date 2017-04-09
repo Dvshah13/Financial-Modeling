@@ -33,7 +33,7 @@ I also wanted to add sentiment analysis as sentiment is one of the most difficul
 <b>Screenshots</b><br><br>
 <b>SVM Classifier Code</b><br>
 <img src="https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen2.png?raw=true" height="250">
-<img src="https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen3.png?raw=true" height="150" width = "250">
+<img src="https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen3.png?raw=true" height="100">
 <img src="https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen4.png?raw=true" height="150">
 <br><b>RNN Code</b><br>
 <img src="https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_screen5.png?raw=true" height="250">
