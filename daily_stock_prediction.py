@@ -9,16 +9,12 @@ from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure import *
 from pybrain.datasets import *
 from pybrain.structure.modules import *
-#%matplotlib inline
 
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
     data = data[:-days, :]
     return data, labels
-
-
-
 
 # CSV Format: Date,Open,High,Low,Close,Volume,Adj Close
 def stock_data(symbol):
@@ -112,7 +108,6 @@ def stock_data(symbol):
     print "Recall: ", recall_svm
 
 ## RNN
-
     net = buildNetwork(5, 20, 1, hiddenclass = LSTMLayer, outclass = SigmoidLayer, recurrent = True)
     ds = ClassificationDataSet(5, 1)
     for i, j in zip(train_features, train_labels):
