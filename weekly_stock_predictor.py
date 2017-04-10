@@ -9,7 +9,7 @@ from pybrain.supervised.trainers import BackpropTrainer
 from pybrain.structure import *
 from pybrain.datasets import *
 from pybrain.structure.modules import *
-#%matplotlib inline
+
 
 def multiple_days_forward(data, days):
     labels = ((data[days:, 3] - data[days:, 0]) > 0).astype(int)
