@@ -10,7 +10,7 @@ Deepak Shah 
 ![alt tag](https://github.com/Dvshah13/Screens-for-Data-Science-Projects/blob/master/dmr_capital_fp.png?raw=true)
 
 <b>Technologies, Frameworks and Programming Languages:</b><br>
-Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript, jQuery, HTML, Sass CSS, Heroku
+Python, Numpy, Pandas, PyBrain, Scipy, Scikit Learn, Flask, MongoDb, Javascript, jQuery, HTML, CSS, Heroku
 <br><br>
 <b>Overview of Project:</b><br>
 DMR Capital was built to allow users to utilize machine learning systems (Support Vector Machine and Recurrent Neural Net), sentiment analysis and basic stock data and indicators to make informed trading decisions to generate above average market return. 
